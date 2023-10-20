@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="ProyectoAlquilerVehiculos" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/ProyectoAlquilerVehiculos" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="./" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/ProyectoAlquilerVehiculos" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="./" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="AppAlquilerVehiculos.cpp" />
+		<Unit filename="AppAlquilerVehiculos.h" />
+		<Unit filename="Cliente.cpp" />
+		<Unit filename="Cliente.h" />
+		<Unit filename="ClienteArchivo.cpp" />
+		<Unit filename="ClienteArchivo.h" />
+		<Unit filename="ClienteManager.cpp" />
+		<Unit filename="ClienteManager.h" />
+		<Unit filename="Fecha.cpp" />
+		<Unit filename="Fecha.h" />
+		<Unit filename="MenuCliente.cpp" />
+		<Unit filename="MenuCliente.h" />
+		<Unit filename="MenuEditarCliente.cpp" />
+		<Unit filename="MenuEditarCliente.h" />
+		<Unit filename="MenuEditarVehiculo.cpp" />
+		<Unit filename="MenuEditarVehiculo.h" />
+		<Unit filename="MenuReserva.cpp" />
+		<Unit filename="MenuReserva.h" />
+		<Unit filename="MenuVehiculos.cpp" />
+		<Unit filename="MenuVehiculos.h" />
+		<Unit filename="Reserva.cpp" />
+		<Unit filename="Reserva.h" />
+		<Unit filename="ReservaArchivo.cpp" />
+		<Unit filename="ReservaArchivo.h" />
+		<Unit filename="ReservaManager.cpp" />
+		<Unit filename="ReservaManager.h" />
+		<Unit filename="Vehiculo.cpp" />
+		<Unit filename="Vehiculo.h" />
+		<Unit filename="VehiculoArchivo.cpp" />
+		<Unit filename="VehiculoArchivo.h" />
+		<Unit filename="VehiculoManager.cpp" />
+		<Unit filename="VehiculoManager.h" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,135 @@
+# depslib dependency file v1.0
+1697758149 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\main.cpp
+	<iostream>
+	"AppAlquilerVehiculos.h"
+	"ClienteManager.h"
+
+1697764525 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\vehiculo.cpp
+	"Vehiculo.h"
+	<cstring>
+
+1696693103 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\vehiculo.h
+	<string>
+
+1696290592 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\vehiculoarchivo.cpp
+	"VehiculoArchivo.h"
+	<cstdio>
+	<cstring>
+
+1696290133 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\vehiculoarchivo.h
+	"Vehiculo.h"
+	<string>
+
+1697758013 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\fecha.cpp
+	"Fecha.h"
+	<ctime>
+	<iostream>
+
+1697758013 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\fecha.h
+	<string>
+
+1697764539 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\reserva.cpp
+	"Reserva.h"
+	<algorithm>
+	<cstring>
+
+1696680319 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\reserva.h
+	<string>
+	"Fecha.h"
+
+1696679141 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\reservaarchivo.cpp
+	"ReservaArchivo.h"
+
+1696679141 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\reservaarchivo.h
+	"Reserva.h"
+	<string>
+
+1697764633 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\reservamanager.cpp
+	"ReservaManager.h"
+	<iostream>
+	<algorithm>
+
+1697764039 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\reservamanager.h
+	"Reserva.h"
+	"VehiculoManager.h"
+	"ReservaArchivo.h"
+	<string>
+
+1697671639 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\vehiculomanager.cpp
+	"VehiculoManager.h"
+	<iostream>
+	<algorithm>
+	"MenuEditarVehiculo.h"
+
+1697669489 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\vehiculomanager.h
+	"Vehiculo.h"
+	"VehiculoArchivo.h"
+	<string>
+
+1697672474 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\appalquilervehiculos.h
+	"MenuVehiculos.h"
+	"MenuReserva.h"
+	"MenuCliente.h"
+
+1697672474 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\appalquilervehiculos.cpp
+	"AppAlquilerVehiculos.h"
+	<iostream>
+
+1696979790 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\menuvehiculos.h
+	"VehiculoManager.h"
+
+1697672365 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\menuvehiculos.cpp
+	"MenuVehiculos.h"
+	<iostream>
+
+1696982573 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\menureserva.cpp
+	"MenuReserva.h"
+	<iostream>
+
+1696980541 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\menureserva.h
+	"ReservaManager.h"
+
+1697671954 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\cliente.cpp
+	"Cliente.h"
+	<cstring>
+
+1697671948 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\cliente.h
+	<string>
+
+1697490705 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\clientearchivo.cpp
+	"ClienteArchivo.h"
+
+1697490705 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\clientearchivo.h
+	"Cliente.h"
+
+1697675824 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\clientemanager.cpp
+	"ClienteManager.h"
+	<iostream>
+	"MenuEditarCliente.h"
+
+1697672332 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\clientemanager.h
+	"Cliente.h"
+	"ClienteArchivo.h"
+	"string"
+
+1697670831 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\menueditarvehiculo.h
+	"Vehiculo.h"
+
+1697675647 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\menueditarvehiculo.cpp
+	"MenuEditarVehiculo.h"
+	<iostream>
+
+1697672332 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\menucliente.h
+	"ClienteManager.h"
+
+1697672374 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\menucliente.cpp
+	"MenuCliente.h"
+	<iostream>
+
+1697675949 source:c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\menueditarcliente.cpp
+	"MenuEditarCliente.h"
+	<iostream>
+
+1697674645 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\menueditarcliente.h
+	"Cliente.h"
+
