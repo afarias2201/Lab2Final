@@ -33,7 +33,7 @@ void MenuReserva::Mostrar(){
             _manager.ListarxID();
             break;
         case 0:
-            return ;
+            return;
             break;
         default:
             cout << "Opcion ingresada es incorrecta." << endl << "Intente nuevamente." << endl;

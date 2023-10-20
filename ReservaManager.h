@@ -16,6 +16,7 @@ class ReservaManager
         int Buscar(int idReserva);
         void ListarxID();
         void CargarVectorPorNroPatente(std::string patente, int cantidadElementos, Reserva* vec);
+        bool validarDisponibilidadVehiculo(Fecha fInicio, Fecha fFin, Reserva* vec, int cantidadElementos);
 
     private:
         ReservaArchivo _archivo = ReservaArchivo("reserva.dat");

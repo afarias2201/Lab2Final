@@ -52,11 +52,9 @@ void ReservaManager::Cargar(){
             return;
         }
         CargarVectorPorNroPatente(patenteVehiculo, cantidadReservasConMismaPatente, reservasConMismaPatente);
-        for(int i=0; i<cantidadReservasConMismaPatente; i++){
-            if(reg.getFechaInicio() > reservasConMismaPatente[i].getFechaInicio() && reg.getFechaInicio() < reservasConMismaPatente[i].getFechaFin() || reg.getFechaFin() > reservasConMismaPatente[i].getFechaInicio()){
-                cout << "El vehiculo no se encuentra disponible para las fechas indicadas. Carga canceladad." << endl;
-                return;
-            }
+        if(!validarDisponibilidadVehiculo(reg.getFechaFin(), reg.getFechaFin(), reservasConMismaPatente, cantidadReservasConMismaPatente)){
+            cout << "El vehiculo no se encuentra disponible para las fechas indicadas. Carga canceladad." << endl;
+            return;
         }
         delete []reservasConMismaPatente;
     }
@@ -182,4 +180,13 @@ void ReservaManager::CargarVectorPorNroPatente(std::string patente, int cantidad
             }
         }
     }
+}
+
+bool ReservaManager::validarDisponibilidadVehiculo(Fecha fInicio, Fecha fFin, Reserva* vec, int cantidadElementos){
+    for(int i=0; i<cantidadElementos; i++){
+        if(fInicio > vec[i].getFechaInicio() && fInicio < vec[i].getFechaFin() || fFin > vec[i].getFechaInicio()){
+            return false;
+        }
+    }
+    return true;
 }
