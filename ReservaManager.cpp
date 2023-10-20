@@ -53,7 +53,7 @@ void ReservaManager::Cargar(){
         }
         CargarVectorPorNroPatente(patenteVehiculo, cantidadReservasConMismaPatente, reservasConMismaPatente);
         for(int i=0; i<cantidadReservasConMismaPatente; i++){
-            if(reg.getFechaInicio() > reservasConMismaPatente[i].getFechaInicio() && reg.getFechaInicio() < reservasConMismaPatente[i].getFechaFin()){
+            if(reg.getFechaInicio() > reservasConMismaPatente[i].getFechaInicio() && reg.getFechaInicio() < reservasConMismaPatente[i].getFechaFin() || reg.getFechaFin() > reservasConMismaPatente[i].getFechaInicio()){
                 cout << "El vehiculo no se encuentra disponible para las fechas indicadas. Carga canceladad." << endl;
                 return;
             }
@@ -171,6 +171,7 @@ int ReservaManager::contarReservasxPatentes(std::string patente){
     return cantidad;
 }
 
+//Se carga el vector generado en el metodo "Cargar" a partir del numero de patente tipeado por el usuario
 void ReservaManager::CargarVectorPorNroPatente(std::string patente, int cantidadElementos, Reserva* vec){
     int cantidadRegistros = _archivo.contarRegistros();
     for(int i=0; i<cantidadElementos; i++){
