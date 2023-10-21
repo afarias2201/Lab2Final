@@ -1,4 +1,5 @@
 #include "ReservaManager.h"
+#include "Vehiculo.h"
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -18,9 +19,25 @@ void ReservaManager::Cargar(){
     cin >> patenteVehiculo;
     transform(patenteVehiculo.begin(), patenteVehiculo.end(), patenteVehiculo.begin(), ::toupper);
 
-    if(_vehiculoManager.Buscar(patenteVehiculo) == -1){
-        cout << "El vehiculo no existe." << endl;
+    int posicionRegistroVehiculo = _archivoVehiculo.Buscar(patenteVehiculo);
+    Vehiculo regVehiculo;
+
+    if(posicionRegistroVehiculo == -1){
+        cout << endl << "El vehiculo no existe." << endl;
         cout << "Carga de reserva cancelada." << endl;
+        return;
+    }
+    else{
+        regVehiculo = _archivoVehiculo.Leer(posicionRegistroVehiculo);
+        if(!regVehiculo.getEstado()){
+            cout << endl << "El vehiculo fue eliminado." << endl;
+            cout << "Carga de reserva cancelada." << endl;
+            return;
+        }
+    }
+
+    if(regVehiculo.getEnTaller()){
+        cout << endl << "El vehiculo se encuentra en taller, no puede ser alquilado." << endl;
         return;
     }
 
@@ -43,7 +60,17 @@ void ReservaManager::Cargar(){
     reg.setFechaFin(Fecha(diaFin, mesFin, anioFin));
     reg.setEstado(true);
 
+    //Se valida que la fecha de fin sea mayor a la fecha de inicio
+    if(reg.getFechaFin() < reg.getFechaInicio()){
+        cout << endl << "Error. La fecha de inicio no puede ser mayor a la fecha de fin." << endl;
+        cout << "Carga de reserva cancelada" << endl;
+        return;
+    }
+
+    //Se cuantan cuantas reservas hay con una misma patente
     int cantidadReservasConMismaPatente = contarReservasxPatentes(patenteVehiculo);
+
+    //Si hay por lo menos una, se genera un vector dinamico de esas reservas
     if(cantidadReservasConMismaPatente != 0){
         Reserva* reservasConMismaPatente;
         reservasConMismaPatente = new Reserva[cantidadReservasConMismaPatente];
@@ -51,6 +78,7 @@ void ReservaManager::Cargar(){
             cout << endl << "Error en memoria dinamica. Carga cancelada." << endl;
             return;
         }
+    //Se validan si el vehiculo esta disponible en las fechas seleccionadas
         CargarVectorPorNroPatente(patenteVehiculo, cantidadReservasConMismaPatente, reservasConMismaPatente);
         if(!validarDisponibilidadVehiculo(reg.getFechaFin(), reg.getFechaFin(), reservasConMismaPatente, cantidadReservasConMismaPatente)){
             cout << "El vehiculo no se encuentra disponible para las fechas indicadas. Carga canceladad." << endl;
@@ -182,9 +210,10 @@ void ReservaManager::CargarVectorPorNroPatente(std::string patente, int cantidad
     }
 }
 
+//Validar si el vehiculo esta disponible para las fechas seleccionadas en el metodo "Cargar"
 bool ReservaManager::validarDisponibilidadVehiculo(Fecha fInicio, Fecha fFin, Reserva* vec, int cantidadElementos){
     for(int i=0; i<cantidadElementos; i++){
-        if(fInicio > vec[i].getFechaInicio() && fInicio < vec[i].getFechaFin() || fFin > vec[i].getFechaInicio()){
+        if(fInicio > vec[i].getFechaInicio() && fInicio < vec[i].getFechaFin() && fFin > vec[i].getFechaInicio()){
             return false;
         }
     }

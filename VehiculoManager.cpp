@@ -36,6 +36,7 @@ void VehiculoManager::Cargar(){
     reg.setMarca(marca);
     reg.setTipo(tipo);
     reg.setAnioProduccion(anioFabricacion);
+    reg.setEnTaller(false);
 
     Mostrar(reg);
     char confirmacion;
@@ -111,13 +112,21 @@ void VehiculoManager::Eliminar(){
 }
 
 void VehiculoManager::Mostrar(Vehiculo reg){
-    cout << "---------------------------" << endl;
+    cout << endl;
     cout << "Patente: " << reg.getPatente() << endl;
     cout << "Modelo: " << reg.getModelo() << endl;
     cout << "Marca: " << reg.getMarca() << endl;
     cout << "Tipo: " << reg.getTipo() << endl;
     cout << "Fabricacion: " << reg.getAnioDeProduccion() << endl;
-    cout << "ESTADO (PRUEBA): " << reg.getEstado() << endl;
+    cout << "En Taller: ";
+    if(reg.getEnTaller()){
+        cout << "Si" << endl;
+    }
+    else{
+        cout << "No" << endl;
+    }
+    cout << "ESTADO (PRUEBA): " << reg.getEstado();
+    cout << endl;
 }
 
 void VehiculoManager::ListarTodos(){
@@ -153,5 +162,83 @@ void VehiculoManager::ListarxPatente(){
     else{
         cout << "Patente no encontrada.";
         cout << endl;
+    }
+}
+
+
+//Metodos para modificar la propiedad "estado" un registro de Vehiculo
+//Son metodos a parte del metodo "Editar" ya que, conceptualmente, el proceso es distinto.
+void VehiculoManager::VehiculoIngresaTaller(){
+    string patente;
+    int posicion;
+
+    cout << "Ingrese Nro. de patente que ingresa a Taller: ";
+    cin >> patente;
+    transform(patente.begin(), patente.end(), patente.begin(), ::toupper);
+
+    posicion = _archivo.Buscar(patente);
+    if(posicion >= 0){
+        Vehiculo reg = _archivo.Leer(posicion);
+
+        if(reg.getEnTaller()){
+            cout << endl << "El vehiculo ya se encuentra en taller." << endl;
+            return;
+        }
+        else if(!reg.getEstado()){
+            cout << endl << "Vehiculo eliminado." << endl;
+            return;
+        }
+        cout << "Vehiculo seleccionado: " << endl;
+        Mostrar(reg);
+
+        cout << endl << "Corfirmar (S/N): ";
+        char confirmacion;
+        cin >> confirmacion;
+        if(toupper(confirmacion) == 'S'){
+            reg.setEnTaller(true);
+            _archivo.Guardar(reg, posicion);
+            cout << "Vehiculo " << reg.getPatente() << " ingresado a taller. No estara disponible para alquilar." << endl;
+        }
+    }
+    else{
+        cout << "Registro no encontrado." << endl;
+    }
+}
+
+void VehiculoManager::VehiculoRetiroDeTaller(){
+    string patente;
+    int posicion;
+
+    cout << "Ingrese Nro. de patente que se retira de taller: ";
+    cin >> patente;
+    transform(patente.begin(), patente.end(), patente.begin(), ::toupper);
+
+    posicion = _archivo.Buscar(patente);
+    if(posicion >= 0){
+        Vehiculo reg = _archivo.Leer(posicion);
+
+        if(!reg.getEnTaller()){
+            cout << endl << "El vehiculo no se encuentra en taller y está disponible para alquilar." << endl;
+            return;
+        }
+        else if(!reg.getEstado()){
+            cout << endl << "Vehiculo eliminado." << endl;
+            return;
+        }
+        cout << "Vehiculo seleccionado: " << endl;
+
+        Mostrar(reg);
+
+        cout << endl << "Corfirmar (S/N): ";
+        char confirmacion;
+        cin >> confirmacion;
+        if(toupper(confirmacion) == 'S'){
+            reg.setEnTaller(false);
+            _archivo.Guardar(reg, posicion);
+            cout << "Vehiculo " << reg.getPatente() << " retirado de taller. Está disponible para alquilar." << endl;
+        }
+    }
+    else{
+        cout << "Registro no encontrado." << endl;
     }
 }

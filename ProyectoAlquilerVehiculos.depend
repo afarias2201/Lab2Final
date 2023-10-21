@@ -145,7 +145,7 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menuvehiculos.h
 	"VehiculoManager.h"
 
-1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.h
+1697902781 c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.h
 	"Vehiculo.h"
 	"VehiculoArchivo.h"
 	<string>
@@ -160,10 +160,11 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menureserva.h
 	"ReservaManager.h"
 
-1697767239 c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.h
+1697901614 c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.h
 	"Reserva.h"
-	"VehiculoManager.h"
 	"ReservaArchivo.h"
+	"VehiculoArchivo.h"
+	"VehiculoManager.h"
 	<string>
 
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\reserva.h
@@ -173,7 +174,7 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\fecha.h
 	<string>
 
-1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\reservaarchivo.h
+1697898420 c:\users\steam\onedrive\escritorio\git\lab2final\reservaarchivo.h
 	"Reserva.h"
 	<string>
 
@@ -231,11 +232,11 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menueditarvehiculo.h
 	"Vehiculo.h"
 
-1697765551 source:c:\users\steam\onedrive\escritorio\git\lab2final\menureserva.cpp
+1697767575 source:c:\users\steam\onedrive\escritorio\git\lab2final\menureserva.cpp
 	"MenuReserva.h"
 	<iostream>
 
-1697765551 source:c:\users\steam\onedrive\escritorio\git\lab2final\menuvehiculos.cpp
+1697903788 source:c:\users\steam\onedrive\escritorio\git\lab2final\menuvehiculos.cpp
 	"MenuVehiculos.h"
 	<iostream>
 
@@ -256,14 +257,15 @@
 	<cstdio>
 	<cstring>
 
-1697765551 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.cpp
+1697903731 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.cpp
 	"VehiculoManager.h"
 	<iostream>
 	<algorithm>
 	"MenuEditarVehiculo.h"
 
-1697767279 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.cpp
+1697905016 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.cpp
 	"ReservaManager.h"
+	"Vehiculo.h"
 	<iostream>
 	<algorithm>
 

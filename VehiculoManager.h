@@ -15,6 +15,8 @@ class VehiculoManager
         void ListarTodos();
         int Buscar(std::string nroPatente);
         void ListarxPatente();
+        void VehiculoIngresaTaller();
+        void VehiculoRetiroDeTaller();
 
     private:
         VehiculoArchivo _archivo = VehiculoArchivo("vehiculo.dat");

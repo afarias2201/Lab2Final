@@ -15,6 +15,8 @@ void MenuVehiculos::Mostrar(){
         cout << "3 - ELIMINAR" << endl;
         cout << "4 - LISTADO DE VEHICULOS" << endl;
         cout << "5 - BUSCAR POR PATENTE" << endl;
+        cout << "6 - INGRESO A TALLER" << endl;
+        cout << "7 - RETIRO DE TALLER" << endl;
         cout << "0 - VOLVER AL MENU PRINCIPAL" <<endl;
         cout << endl <<"INGRESE UNA OPCION: ";
         cin >> opc;
@@ -35,6 +37,12 @@ void MenuVehiculos::Mostrar(){
             break;
         case 5:
             _manager.ListarxPatente();
+            break;
+        case 6:
+            _manager.VehiculoIngresaTaller();
+            break;
+        case 7:
+            _manager.VehiculoRetiroDeTaller();
             break;
         case 0:
             return ;
