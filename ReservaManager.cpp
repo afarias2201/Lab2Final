@@ -5,7 +5,7 @@
 using namespace std;
 
 void ReservaManager::Cargar(){
-    int id;
+    int id, numDniCliente;
     string patenteVehiculo;
     float importeAlquiler;
     int diaInicio, mesInicio, anioInicio, diaFin, mesFin, anioFin;
@@ -41,6 +41,15 @@ void ReservaManager::Cargar(){
         return;
     }
 
+    cout << "Ingrese el numero de documento del cliente: ";
+    cin >> numDniCliente;
+
+    if(_archivoCliente.Buscar(numDniCliente) == -1){
+        cout << endl << "El cliente no existe." << endl;
+        cout << "Carga de reserva cancelada." << endl;
+        return;
+    }
+
     cout << "Importe total de la reserva: $";
     cin >> importeAlquiler;
     cout << "Fecha de Inicio: ";
@@ -54,6 +63,7 @@ void ReservaManager::Cargar(){
 
     Reserva reg;
     reg.setIdReserva(id);
+    reg.setDocCliente(numDniCliente);
     reg.setPatenteVehiculo(patenteVehiculo);
     reg.setImporteAlquiler(importeAlquiler);
     reg.setFechaInicio(Fecha(diaInicio, mesInicio, anioInicio));
@@ -80,7 +90,7 @@ void ReservaManager::Cargar(){
         }
     //Se validan si el vehiculo esta disponible en las fechas seleccionadas
         CargarVectorPorNroPatente(patenteVehiculo, cantidadReservasConMismaPatente, reservasConMismaPatente);
-        if(!validarDisponibilidadVehiculo(reg.getFechaFin(), reg.getFechaFin(), reservasConMismaPatente, cantidadReservasConMismaPatente)){
+        if(!validarDisponibilidadVehiculo(reg.getFechaInicio(), reg.getFechaFin(), reservasConMismaPatente, cantidadReservasConMismaPatente)){
             cout << "El vehiculo no se encuentra disponible para las fechas indicadas. Carga canceladad." << endl;
             return;
         }
@@ -139,6 +149,7 @@ void ReservaManager::Eliminar(){
 void ReservaManager::Mostrar(Reserva reg){
     cout << "---------------------------" << endl;
     cout << "ID Reserva: " << reg.getIdReserva() << endl;
+    cout << "Documento del cliente: " << reg.getDocCliente() << endl;
     cout << "Vehiculo alquilado: " << reg.getPatenteVehiculo() << endl;
     cout << "Importe del contrato: " << reg.getImporteAlquiler() << endl;
     cout << "Fecha de Inicio: " << reg.getFechaInicio().toString() << endl;
@@ -213,7 +224,7 @@ void ReservaManager::CargarVectorPorNroPatente(std::string patente, int cantidad
 //Validar si el vehiculo esta disponible para las fechas seleccionadas en el metodo "Cargar"
 bool ReservaManager::validarDisponibilidadVehiculo(Fecha fInicio, Fecha fFin, Reserva* vec, int cantidadElementos){
     for(int i=0; i<cantidadElementos; i++){
-        if(fInicio > vec[i].getFechaInicio() && fInicio < vec[i].getFechaFin() && fFin > vec[i].getFechaInicio()){
+        if(fInicio > vec[i].getFechaInicio() && fInicio < vec[i].getFechaFin() || fFin > vec[i].getFechaInicio()){
             return false;
         }
     }

@@ -160,14 +160,15 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menureserva.h
 	"ReservaManager.h"
 
-1697901614 c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.h
+1698101931 c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.h
 	"Reserva.h"
 	"ReservaArchivo.h"
 	"VehiculoArchivo.h"
+	"ClienteArchivo.h"
 	"VehiculoManager.h"
 	<string>
 
-1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\reserva.h
+1698101718 c:\users\steam\onedrive\escritorio\git\lab2final\reserva.h
 	<string>
 	"Fecha.h"
 
@@ -240,7 +241,7 @@
 	"MenuVehiculos.h"
 	<iostream>
 
-1697765551 source:c:\users\steam\onedrive\escritorio\git\lab2final\reserva.cpp
+1698101718 source:c:\users\steam\onedrive\escritorio\git\lab2final\reserva.cpp
 	"Reserva.h"
 	<algorithm>
 	<cstring>
@@ -257,13 +258,13 @@
 	<cstdio>
 	<cstring>
 
-1697903731 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.cpp
+1697905454 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.cpp
 	"VehiculoManager.h"
 	<iostream>
 	<algorithm>
 	"MenuEditarVehiculo.h"
 
-1697905016 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.cpp
+1698104084 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.cpp
 	"ReservaManager.h"
 	"Vehiculo.h"
 	<iostream>

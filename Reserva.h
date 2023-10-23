@@ -9,6 +9,7 @@ class Reserva
         Reserva();
         Reserva(std::string patenteVehiculo, float importeAlquiler, Fecha fechaInicio, Fecha fechaFin, bool estado);
         int getIdReserva() const;
+        int getDocCliente() const;
         std::string getPatenteVehiculo() const;
         float getImporteAlquiler() const;
         Fecha getFechaInicio() const;
@@ -16,6 +17,7 @@ class Reserva
         bool getEstado() const;
 
         void setIdReserva(int idReserva);
+        void setDocCliente (int numDoc);
         void setPatenteVehiculo(std::string patenteVehiculo);
         void setImporteAlquiler(float importeAlquiler);
         void setFechaInicio(Fecha fechaInicio);
@@ -24,6 +26,7 @@ class Reserva
 
     private:
         int _idReserva;
+        int _numeroDocCliente;
         char _patenteVehiculo[10];
         float _importeAlquiler;
         Fecha _fechaInicio;

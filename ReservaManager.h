@@ -3,6 +3,7 @@
 #include "Reserva.h"
 #include "ReservaArchivo.h"
 #include "VehiculoArchivo.h"
+#include "ClienteArchivo.h"
 #include "VehiculoManager.h"
 #include <string>
 
@@ -22,6 +23,7 @@ class ReservaManager
     private:
         ReservaArchivo _archivo = ReservaArchivo("reserva.dat");
         VehiculoArchivo _archivoVehiculo = VehiculoArchivo("vehiculo.dat");
+        ClienteArchivo _archivoCliente = ClienteArchivo("clientes.dat");
         VehiculoManager _vehiculoManager;
         int generarReservaId();
         int contarReservasxPatentes(std::string patente);

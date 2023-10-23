@@ -16,6 +16,9 @@ Reserva::Reserva(std::string patenteVehiculo, float importeAlquiler, Fecha fecha
 int Reserva::getIdReserva() const{
     return _idReserva;
 }
+int Reserva::getDocCliente() const{
+    return _numeroDocCliente;
+}
 std::string Reserva::getPatenteVehiculo() const{
     return _patenteVehiculo;
 }
@@ -35,7 +38,9 @@ bool Reserva::getEstado() const{
 void Reserva::setIdReserva(int idReserva){
     _idReserva = idReserva;
 }
-
+void Reserva::setDocCliente (int numDoc){
+    _numeroDocCliente = numDoc;
+}
 void Reserva::setPatenteVehiculo(std::string patenteVehiculo){
     transform(patenteVehiculo.begin(), patenteVehiculo.end(), patenteVehiculo.begin(), ::toupper);
     strcpy(_patenteVehiculo, patenteVehiculo.c_str());
