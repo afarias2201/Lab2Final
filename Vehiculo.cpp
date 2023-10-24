@@ -26,16 +26,8 @@ std::string Vehiculo::getModelo()const{
 std::string Vehiculo::getMarca() const{
     return _marca;
 }
-std::string Vehiculo::getTipo() const{
-    if(_tipo == 1){
-        return "Gama baja";
-    }
-    else if(_tipo == 2){
-        return "Gama media";
-    }
-    else{
-        return "Gama Alta";
-    }
+int Vehiculo::getTipo() const{
+    return _tipo;
 }
 
 int Vehiculo::getAnioDeProduccion() const{

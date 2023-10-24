@@ -13,6 +13,7 @@ void AppAlquilerVehiculos::Ejecutar(){
         cout << "1 - RESERVAS" << endl;
         cout << "2 - VEHICULOS" << endl;
         cout << "3 - CLIENTES" << endl;
+        cout << "4 - DISPONIBILIDAD DE VEHICULOS" << endl;
         cout << "0 - CERRAR PROGRAMA" <<endl;
         cout << endl <<"INGRESE UNA OPCION: ";
         cin >> opc;
@@ -27,6 +28,9 @@ void AppAlquilerVehiculos::Ejecutar(){
             break;
         case 3:
             _menuCliente.Mostrar();
+            break;
+        case 4:
+            _dispoFlota.generarDisponibilidad();
             break;
         case 0:
             return ;

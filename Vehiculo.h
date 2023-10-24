@@ -12,7 +12,7 @@ class Vehiculo
         std::string getPatente() const;
         std::string getModelo() const;
         std::string getMarca() const;
-        std::string getTipo() const;
+        int getTipo() const;
         int getAnioDeProduccion() const;
         bool getEnTaller() const;
         bool getEstado() const;

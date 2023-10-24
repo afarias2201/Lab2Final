@@ -42,6 +42,8 @@
 		<Unit filename="ClienteArchivo.h" />
 		<Unit filename="ClienteManager.cpp" />
 		<Unit filename="ClienteManager.h" />
+		<Unit filename="DisponibilidadFlota.cpp" />
+		<Unit filename="DisponibilidadFlota.h" />
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
 		<Unit filename="MenuCliente.cpp" />

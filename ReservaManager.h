@@ -19,6 +19,7 @@ class ReservaManager
         void ListarxID();
         void CargarVectorPorNroPatente(std::string patente, int cantidadElementos, Reserva* vec);
         bool validarDisponibilidadVehiculo(Fecha fInicio, Fecha fFin, Reserva* vec, int cantidadElementos);
+        int contarReservasxPatentes(std::string patente);
 
     private:
         ReservaArchivo _archivo = ReservaArchivo("reserva.dat");
@@ -26,7 +27,6 @@ class ReservaManager
         ClienteArchivo _archivoCliente = ClienteArchivo("clientes.dat");
         VehiculoManager _vehiculoManager;
         int generarReservaId();
-        int contarReservasxPatentes(std::string patente);
 };
 
 #endif // RESERVAMANAGER_H

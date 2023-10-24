@@ -3,6 +3,7 @@
 #include "MenuVehiculos.h"
 #include "MenuReserva.h"
 #include "MenuCliente.h"
+#include "DisponibilidadFlota.h"
 
 class AppAlquilerVehiculos
 {
@@ -13,6 +14,7 @@ class AppAlquilerVehiculos
         MenuVehiculos _menuVehiculos;
         MenuReserva _menuReserva;
         MenuCliente _menuCliente;
+        DisponibilidadFlota _dispoFlota;
 };
 
 #endif // APPALQUILERVEHICULOS_H

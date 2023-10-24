@@ -116,7 +116,16 @@ void VehiculoManager::Mostrar(Vehiculo reg){
     cout << "Patente: " << reg.getPatente() << endl;
     cout << "Modelo: " << reg.getModelo() << endl;
     cout << "Marca: " << reg.getMarca() << endl;
-    cout << "Tipo: " << reg.getTipo() << endl;
+    cout << "Tipo: ";
+    if(reg.getTipo() == 1){
+        cout << "Gama baja" << endl;
+    }
+    else if(reg.getTipo() == 2){
+        cout << "Gama media" << endl;
+    }
+    else{
+        cout << "Gama Alta" << endl;
+    }
     cout << "Fabricacion: " << reg.getAnioDeProduccion() << endl;
     cout << "En Taller: ";
     if(reg.getEnTaller()){
