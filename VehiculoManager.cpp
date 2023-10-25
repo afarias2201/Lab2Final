@@ -37,6 +37,7 @@ void VehiculoManager::Cargar(){
     reg.setTipo(tipo);
     reg.setAnioProduccion(anioFabricacion);
     reg.setEnTaller(false);
+    reg.setEstado(true);
 
     Mostrar(reg);
     char confirmacion;
@@ -249,5 +250,30 @@ void VehiculoManager::VehiculoRetiroDeTaller(){
     }
     else{
         cout << "Registro no encontrado." << endl;
+    }
+}
+
+int VehiculoManager::contarVehiculosActivos(){
+    int cantidad = 0;
+    int cantidadRegistros = _archivo.contarRegistros();
+    for(int i=0; i<cantidadRegistros; i++){
+        Vehiculo reg = _archivo.Leer(i);
+        if(reg.getEstado()){
+            cantidad++;
+        }
+    }
+    return cantidad;
+}
+
+void VehiculoManager::cargarVectorVehiculosActivos(Vehiculo* vec, int cantidadElementos) {
+    int cantidadRegistros = _archivo.contarRegistros();
+    int indiceVec = 0; // Nuevo índice para controlar la asignación en vec
+
+    for (int x = 0; x < cantidadRegistros && indiceVec < cantidadElementos; x++) {
+        Vehiculo reg = _archivo.Leer(x);
+        if (reg.getEstado()) {
+            vec[indiceVec] = reg;
+            indiceVec++; // Incrementa el índice en vec solo si se asigna un vehículo válido
+        }
     }
 }

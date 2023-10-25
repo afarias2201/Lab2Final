@@ -146,7 +146,7 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menuvehiculos.h
 	"VehiculoManager.h"
 
-1697902781 c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.h
+1698192345 c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.h
 	"Vehiculo.h"
 	"VehiculoArchivo.h"
 	<string>
@@ -259,7 +259,7 @@
 	<cstdio>
 	<cstring>
 
-1698109249 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.cpp
+1698194858 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.cpp
 	"VehiculoManager.h"
 	<iostream>
 	<algorithm>
@@ -271,10 +271,11 @@
 	<iostream>
 	<algorithm>
 
-1698112565 source:c:\users\steam\onedrive\escritorio\git\lab2final\disponibilidadflota.cpp
+1698192677 source:c:\users\steam\onedrive\escritorio\git\lab2final\disponibilidadflota.cpp
 	"DisponibilidadFlota.h"
 	<cstring>
 	"Vehiculo.h"
+	"VehiculoManager.h"
 	"ReservaManager.h"
 	<iostream>
 

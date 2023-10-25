@@ -1,12 +1,14 @@
 #include "DisponibilidadFlota.h"
 #include <cstring>
 #include "Vehiculo.h"
+#include "VehiculoManager.h"
 #include "ReservaManager.h"
 #include <iostream>
 
 void DisponibilidadFlota::generarDisponibilidad()
 {
-    int cantidadVehiculos = _archivoVehiculo.contarRegistros();
+    VehiculoManager vehiculoManager;
+    int cantidadVehiculos = vehiculoManager.contarVehiculosActivos();
 
     DisponibilidadFlota* vecDispo;
     vecDispo = new DisponibilidadFlota[cantidadVehiculos];
@@ -18,15 +20,23 @@ void DisponibilidadFlota::generarDisponibilidad()
 
     for (int i=0; i<cantidadVehiculos; i++)
     {
-        Vehiculo vehiculo = _archivoVehiculo.Leer(i);
-        vecDispo[i].setPatenteDispo(vehiculo.getPatente());
-        vecDispo[i].setMarcaDispo(vehiculo.getMarca());
-        vecDispo[i].setModeloDispo(vehiculo.getModelo());
-        vecDispo[i].setAnioProduccionDispo(vehiculo.getAnioDeProduccion());
-        vecDispo[i].setTipoDispo(vehiculo.getTipo());
+        Vehiculo* vVehiculo;
+        vVehiculo = new Vehiculo[cantidadVehiculos];
+        if(vVehiculo == nullptr)
+        {
+            std::cout << "Error de memoria." << std::endl;
+        }
+
+        vehiculoManager.cargarVectorVehiculosActivos(vVehiculo, cantidadVehiculos);
+
+        vecDispo[i].setPatenteDispo(vVehiculo[i].getPatente());
+        vecDispo[i].setMarcaDispo(vVehiculo[i].getMarca());
+        vecDispo[i].setModeloDispo(vVehiculo[i].getModelo());
+        vecDispo[i].setAnioProduccionDispo(vVehiculo[i].getAnioDeProduccion());
+        vecDispo[i].setTipoDispo(vVehiculo[i].getTipo());
 
         ReservaManager reservaManager;
-        int cantidadReservasPorPatente = reservaManager.contarReservasxPatentes(vehiculo.getPatente());
+        int cantidadReservasPorPatente = reservaManager.contarReservasxPatentes(vVehiculo[i].getPatente());
         if(cantidadReservasPorPatente != 0)
         {
             Reserva* reservasConMismaPatente;
@@ -37,22 +47,22 @@ void DisponibilidadFlota::generarDisponibilidad()
                 return;
             }
 
-            reservaManager.CargarVectorPorNroPatente(vehiculo.getPatente(), cantidadReservasPorPatente, reservasConMismaPatente);
-            if(!validarSiEstaDisponibleHoy(fechaDeConsulta, reservasConMismaPatente, cantidadReservasPorPatente))
+            reservaManager.CargarVectorPorNroPatente(vVehiculo[i].getPatente(), cantidadReservasPorPatente, reservasConMismaPatente);
+            if(!validarSiEstaDisponibleHoy(fechaDeConsulta, reservasConMismaPatente, cantidadReservasPorPatente)) //Se valida  si el vehiculo esta alquilado el dia de la fecha de consulta
             {
-                vecDispo[i].setEstadoVehiculoDispo(1);
+                vecDispo[i].setEstadoVehiculoDispo(1); //Se le asigna estado "Alquilado"
             }
             else if(validarSiEstaDisponibleHoy(fechaDeConsulta, reservasConMismaPatente, cantidadReservasPorPatente) || cantidadReservasPorPatente == 0)
             {
-                vecDispo[i].setEstadoVehiculoDispo(0);
+                vecDispo[i].setEstadoVehiculoDispo(0); //Se le asigna estado "Disponible" si no esta alquilado el dia de la fecha o no existen reservas con esa patente
             }
             delete[] reservasConMismaPatente;
-
         }
-        else if(vehiculo.getEnTaller())
+        else if(vVehiculo[i].getEnTaller())
         {
-            vecDispo[i].setEstadoVehiculoDispo(2);
+            vecDispo[i].setEstadoVehiculoDispo(2); //Se le asigna el estado "En taller" si esta ingresado en taller
         }
+        delete[] vVehiculo;
     }
     Mostrar(vecDispo, cantidadVehiculos);
     delete[] vecDispo;
@@ -80,13 +90,16 @@ void DisponibilidadFlota::setTipoDispo(int tipo)
 }
 void DisponibilidadFlota::setEstadoVehiculoDispo(int estadoVehiculo)
 {
-    if(estadoVehiculo == 0){
+    if(estadoVehiculo == 0)
+    {
         _estadoVehiculo = 0;
     }
-    if(estadoVehiculo == 1){
+    if(estadoVehiculo == 1)
+    {
         _estadoVehiculo = 1;
     }
-    if(estadoVehiculo == 2){
+    if(estadoVehiculo == 2)
+    {
         _estadoVehiculo = 2;
     }
 }

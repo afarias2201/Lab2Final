@@ -17,6 +17,8 @@ class VehiculoManager
         void ListarxPatente();
         void VehiculoIngresaTaller();
         void VehiculoRetiroDeTaller();
+        int contarVehiculosActivos();
+        void cargarVectorVehiculosActivos(Vehiculo* vec, int cantidadElementos);
 
     private:
         VehiculoArchivo _archivo = VehiculoArchivo("vehiculo.dat");
