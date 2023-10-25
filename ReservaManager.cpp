@@ -23,21 +23,21 @@ void ReservaManager::Cargar(){
     Vehiculo regVehiculo;
 
     if(posicionRegistroVehiculo == -1){
-        cout << endl << "El vehiculo no existe." << endl;
+        cout << endl << "El vehiculo no existe." << endl;   //Valida que el vehiculo exista
         cout << "Carga de reserva cancelada." << endl;
         return;
     }
     else{
         regVehiculo = _archivoVehiculo.Leer(posicionRegistroVehiculo);
         if(!regVehiculo.getEstado()){
-            cout << endl << "El vehiculo fue eliminado." << endl;
+            cout << endl << "El vehiculo fue eliminado." << endl; //valida que el vehiculo no haya sido eliminado
             cout << "Carga de reserva cancelada." << endl;
             return;
         }
     }
 
     if(regVehiculo.getEnTaller()){
-        cout << endl << "El vehiculo se encuentra en taller, no puede ser alquilado." << endl;
+        cout << endl << "El vehiculo se encuentra en taller, no puede ser alquilado." << endl;  //Valida que el vehiculo no se encuentre en taller
         return;
     }
 
@@ -45,7 +45,7 @@ void ReservaManager::Cargar(){
     cin >> numDniCliente;
 
     if(_archivoCliente.Buscar(numDniCliente) == -1){
-        cout << endl << "El cliente no existe." << endl;
+        cout << endl << "El cliente no existe." << endl;    //Valida que el cliente exista en la base de datos
         cout << "Carga de reserva cancelada." << endl;
         return;
     }

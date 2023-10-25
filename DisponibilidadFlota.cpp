@@ -21,17 +21,17 @@ void DisponibilidadFlota::generarDisponibilidad()
     for (int i=0; i<cantidadVehiculos; i++)
     {
         Vehiculo* vVehiculo;
-        vVehiculo = new Vehiculo[cantidadVehiculos];
+        vVehiculo = new Vehiculo[cantidadVehiculos]; //Se genera un vector dinamico de vehiculos
         if(vVehiculo == nullptr)
         {
             std::cout << "Error de memoria." << std::endl;
         }
 
-        vehiculoManager.cargarVectorVehiculosActivos(vVehiculo, cantidadVehiculos);
+        vehiculoManager.cargarVectorVehiculosActivos(vVehiculo, cantidadVehiculos); //Se carga el vector de vehiculos con los vehiculos activos
 
         vecDispo[i].setPatenteDispo(vVehiculo[i].getPatente());
         vecDispo[i].setMarcaDispo(vVehiculo[i].getMarca());
-        vecDispo[i].setModeloDispo(vVehiculo[i].getModelo());
+        vecDispo[i].setModeloDispo(vVehiculo[i].getModelo());                       //Se le settea los datos del vehiculo
         vecDispo[i].setAnioProduccionDispo(vVehiculo[i].getAnioDeProduccion());
         vecDispo[i].setTipoDispo(vVehiculo[i].getTipo());
 
@@ -40,14 +40,14 @@ void DisponibilidadFlota::generarDisponibilidad()
         if(cantidadReservasPorPatente != 0)
         {
             Reserva* reservasConMismaPatente;
-            reservasConMismaPatente = new Reserva[cantidadReservasPorPatente];
+            reservasConMismaPatente = new Reserva[cantidadReservasPorPatente]; //Se genera un vector dinamico de reservas
             if(reservasConMismaPatente == nullptr)
             {
                 std::cout << std::endl << "Error en memoria dinamica." << std::endl;
                 return;
             }
 
-            reservaManager.CargarVectorPorNroPatente(vVehiculo[i].getPatente(), cantidadReservasPorPatente, reservasConMismaPatente);
+            reservaManager.CargarVectorPorNroPatente(vVehiculo[i].getPatente(), cantidadReservasPorPatente, reservasConMismaPatente); //Se carga el vector de reservas con las reservas con la patente del vehiculo de turno
             if(!validarSiEstaDisponibleHoy(fechaDeConsulta, reservasConMismaPatente, cantidadReservasPorPatente)) //Se valida  si el vehiculo esta alquilado el dia de la fecha de consulta
             {
                 vecDispo[i].setEstadoVehiculoDispo(1); //Se le asigna estado "Alquilado"
@@ -64,7 +64,7 @@ void DisponibilidadFlota::generarDisponibilidad()
         }
         delete[] vVehiculo;
     }
-    Mostrar(vecDispo, cantidadVehiculos);
+    Mostrar(vecDispo, cantidadVehiculos); //Se muestra la dispo pasando el vector de vehiculos de la dispo y la cantidad de elementos
     delete[] vecDispo;
 }
 
