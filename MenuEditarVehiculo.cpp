@@ -24,7 +24,6 @@ Vehiculo MenuEditarVehiculo::Mostrar(Vehiculo& reg)
         cout << "Ingrese nuevo modelo: ";
         cin >> modelo;
         reg.setModelo(modelo);
-        cout << endl << "Registro modificado correctamente." << endl;
         return reg;
     }
     break;
@@ -34,7 +33,6 @@ Vehiculo MenuEditarVehiculo::Mostrar(Vehiculo& reg)
         cout << "Ingrese nueva marca: ";
         cin >> marca;
         reg.setMarca(marca);
-        cout << endl << "Registro modificado correctamente." << endl;
         return reg;
     }
     break;
@@ -44,7 +42,6 @@ Vehiculo MenuEditarVehiculo::Mostrar(Vehiculo& reg)
         cout << "Ingrese nuevo tipo de gama: ";
         cin >> tipo;
         reg.setTipo(tipo);
-        cout << endl << "Registro modificado correctamente." << endl;
         return reg;
     }
     break;
@@ -54,7 +51,6 @@ Vehiculo MenuEditarVehiculo::Mostrar(Vehiculo& reg)
         cout << "Ingrese nuevo anio de produccion: ";
         cin >> anioProduccion;
         reg.setAnioProduccion(anioProduccion);
-        cout << endl << "Registro modificado correctamente." << endl;
         return reg;
     }
     break;
@@ -62,6 +58,10 @@ Vehiculo MenuEditarVehiculo::Mostrar(Vehiculo& reg)
         cout << "No se realizaron cambios." << endl;
         return reg;
         break;
+    default:
+        cout << "Opcion ingresada incorrecta. Intente nuevamente.";
+             break;
     }
+
     system("cls");
 }

@@ -22,6 +22,7 @@ class Fecha
       std::string toString();
 
       bool operator == (Fecha f);
+      bool operator != (Fecha f);
       bool operator > (Fecha f);
       bool operator < (Fecha f);
 };

@@ -14,11 +14,18 @@ class VehiculoManager
         void Mostrar(Vehiculo reg);
         void ListarTodos();
         int Buscar(std::string nroPatente);
-        void ListarxPatente();
         void VehiculoIngresaTaller();
         void VehiculoRetiroDeTaller();
         int contarVehiculosActivos();
         void cargarVectorVehiculosActivos(Vehiculo* vec, int cantidadElementos);
+
+        //consultar
+        void ListarxPatente();
+        void ListarxGamaVehiculo();
+        void ListarxMarca();
+        void ListarxAnioProduccion();
+
+        //Reporte
 
     private:
         VehiculoArchivo _archivo = VehiculoArchivo("vehiculo.dat");

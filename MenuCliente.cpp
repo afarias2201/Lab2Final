@@ -3,7 +3,7 @@
 using namespace std;
 
 void MenuCliente::Mostrar(){
-        int opc;
+    int opc;
     while(true)
     {
         system("cls");

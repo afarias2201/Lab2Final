@@ -26,7 +26,6 @@ Cliente MenuEditarCliente::Mostrar(Cliente& reg)
         cout << "Ingrese nuevos nombres: ";
         getline(cin, nombres);
         reg.setNombres(nombres);
-        cout << endl << "Registro modificado correctamente." << endl;
         return reg;
     }
     break;
@@ -36,7 +35,6 @@ Cliente MenuEditarCliente::Mostrar(Cliente& reg)
         cout << "Ingrese nuevos apellidos: ";
         getline(cin, apellidos);
         reg.setApellidos(apellidos);
-        cout << endl << "Registro modificado correctamente." << endl;
         return reg;
     }
     break;
@@ -46,7 +44,6 @@ Cliente MenuEditarCliente::Mostrar(Cliente& reg)
         cout << "Ingrese nuevo domicilio: ";
         getline(cin, domicilio);
         reg.setDomicilio(domicilio);
-        cout << endl << "Registro modificado correctamente." << endl;
         return reg;
     }
     break;
@@ -56,7 +53,6 @@ Cliente MenuEditarCliente::Mostrar(Cliente& reg)
         cout << "Ingrese nuevo telefono: ";
         getline(cin, telefono);
         reg.setTelefono(telefono);
-        cout << endl << "Registro modificado correctamente." << endl;
         return reg;
     }
     break;
@@ -66,7 +62,6 @@ Cliente MenuEditarCliente::Mostrar(Cliente& reg)
         cout << "Ingrese nuevo e-mail: ";
         getline(cin, email);
         reg.setEmail(email);
-        cout << endl << "Registro modificado correctamente." << endl;
         return reg;
     }
     break;

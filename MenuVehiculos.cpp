@@ -17,6 +17,9 @@ void MenuVehiculos::Mostrar(){
         cout << "5 - BUSCAR POR PATENTE" << endl;
         cout << "6 - INGRESO A TALLER" << endl;
         cout << "7 - RETIRO DE TALLER" << endl;
+        cout << "8 - LISTAR VEHICULOS POR GAMA" << endl;
+        cout << "9 - LISTAR VEHICULOS POR MARCA" << endl;
+        cout << "10 - LISTAR VEHICULOS POR AÑO DE PRODUCCION" << endl;
         cout << "0 - VOLVER AL MENU PRINCIPAL" <<endl;
         cout << endl <<"INGRESE UNA OPCION: ";
         cin >> opc;
@@ -43,6 +46,15 @@ void MenuVehiculos::Mostrar(){
             break;
         case 7:
             _manager.VehiculoRetiroDeTaller();
+            break;
+        case 8:
+            _manager.ListarxGamaVehiculo();
+            break;
+        case 9:
+            _manager.ListarxMarca();
+            break;
+        case 10:
+            _manager.ListarxAnioProduccion();
             break;
         case 0:
             return ;

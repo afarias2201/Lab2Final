@@ -39,6 +39,6 @@ void AppAlquilerVehiculos::Ejecutar(){
             cout << "Opcion ingresada es incorrecta." << endl << "Intente nuevamente." << endl;
             break;
         }
-        system("pause");
+        // system("pause");
     }
 }

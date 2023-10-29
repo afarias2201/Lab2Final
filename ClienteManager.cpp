@@ -10,7 +10,7 @@ void ClienteManager::Cargar(){
     cout << "Ingrese informacion del nuevo cliente." << endl;
     cout << "Nro. de DNI: ";
     cin >> dni;
-    if(Buscar(dni)!= -1){
+    if(_archivo.Buscar(dni)!= -1){
         cout << "El nro. de DNI indicado ya existe." << endl;
         cout << "No se ha grabado el nuevo registro." << endl;
         return;
@@ -68,7 +68,12 @@ void ClienteManager::Editar(){
         Mostrar(reg);
         MenuEditarCliente menuEditarCliente;
         menuEditarCliente.Mostrar(reg);
-        _archivo.Guardar(reg, posicion);
+        if(_archivo.Guardar(reg, posicion)){
+            cout << "Cliente modificado correctamente." << endl;
+        }
+        else{
+            cout << "Error. No se pudo modificar el registro." << endl;
+        }
     }
     else{
         cout << "Registro no encontrado." << endl;
@@ -105,18 +110,23 @@ void ClienteManager::Eliminar(){
     }
 }
 void ClienteManager::Mostrar(Cliente reg){
-    cout << "---------------------------" << endl;
-    cout << "DNI: " << reg.getDNI() << endl;
-    cout << "NOMBRES: " << reg.getNombres() << endl;
-    cout << "APELLIDOS: " << reg.getApellidos() << endl;
-    cout << "DOMICILIO: " << reg.getDomicilio() << endl;
-    cout << "TELEFONO: " << reg.getTelefono() << endl;
-    cout << "E-MAIL: " << reg.getEmail() << endl;
+    if(reg.getEstado()){
+        cout << "---------------------------" << endl;
+        cout << "DNI: " << reg.getDNI() << endl;
+        cout << "APELLIDOS: " << reg.getApellidos() << endl;
+        cout << "NOMBRES: " << reg.getNombres() << endl;
+        cout << "DOMICILIO: " << reg.getDomicilio() << endl;
+        cout << "TELEFONO: " << reg.getTelefono() << endl;
+        cout << "E-MAIL: " << reg.getEmail() << endl;
+    }
 }
 void ClienteManager::ListarTodos(){
     int cantidadRegistros = _archivo.contarRegistros();
     for(int i=0; i<cantidadRegistros; i++){
-        Mostrar(_archivo.Leer(i));
+        Cliente reg = _archivo.Leer(i);
+        if(reg.getEstado()){
+            Mostrar(reg);
+        }
     }
     cout << endl;
 }

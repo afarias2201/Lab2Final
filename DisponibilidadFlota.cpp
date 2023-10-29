@@ -66,6 +66,7 @@ void DisponibilidadFlota::generarDisponibilidad()
     }
     Mostrar(vecDispo, cantidadVehiculos); //Se muestra la dispo pasando el vector de vehiculos de la dispo y la cantidad de elementos
     delete[] vecDispo;
+    system("pause");
 }
 
 void DisponibilidadFlota::setPatenteDispo(std::string patente)

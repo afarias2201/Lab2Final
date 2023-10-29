@@ -71,10 +71,20 @@ void VehiculoManager::Editar(){
     if(posicion >= 0){
         MenuEditarVehiculo menuEditorVehiculo;
         Vehiculo reg = _archivo.Leer(posicion);
+        if(!reg.getEstado()){
+            cout << "Vehiculo no encontrado." << endl;
+            return;
+        }
         cout << "Registro a modificar: " << endl;
         Mostrar(reg);
         menuEditorVehiculo.Mostrar(reg);
-        _archivo.Guardar(reg, posicion);
+        if(reg.getTipo() < 1 || reg.getTipo() > 3){
+            cout << "Gama de vehiculo incorrecta. Modificación cancelada." << endl;
+            return;
+        }
+        if(_archivo.Guardar(reg, posicion)){
+            cout << "Registro modificado satisfactoriamente." << endl;
+        }
     }
     else{
         cout << "Registro no encontrado." << endl;
@@ -113,36 +123,42 @@ void VehiculoManager::Eliminar(){
 }
 
 void VehiculoManager::Mostrar(Vehiculo reg){
-    cout << endl;
-    cout << "Patente: " << reg.getPatente() << endl;
-    cout << "Modelo: " << reg.getModelo() << endl;
-    cout << "Marca: " << reg.getMarca() << endl;
-    cout << "Tipo: ";
-    if(reg.getTipo() == 1){
-        cout << "Gama baja" << endl;
-    }
-    else if(reg.getTipo() == 2){
-        cout << "Gama media" << endl;
+    if(reg.getEstado()){
+        cout << endl;
+        cout << "Patente: " << reg.getPatente() << endl;
+        cout << "Modelo: " << reg.getModelo() << endl;
+        cout << "Marca: " << reg.getMarca() << endl;
+        cout << "Tipo: ";
+        if(reg.getTipo() == 1){
+            cout << "Gama baja" << endl;
+        }
+        else if(reg.getTipo() == 2){
+            cout << "Gama media" << endl;
+        }
+        else{
+            cout << "Gama Alta" << endl;
+        }
+        cout << "Fabricacion: " << reg.getAnioDeProduccion() << endl;
+        cout << "En Taller: ";
+        if(reg.getEnTaller()){
+            cout << "Si" << endl;
+        }
+        else{
+            cout << "No" << endl;
+        }
     }
     else{
-        cout << "Gama Alta" << endl;
+        cout << "Vehiculo no encontrado o eliminado." << endl;
     }
-    cout << "Fabricacion: " << reg.getAnioDeProduccion() << endl;
-    cout << "En Taller: ";
-    if(reg.getEnTaller()){
-        cout << "Si" << endl;
-    }
-    else{
-        cout << "No" << endl;
-    }
-    cout << "ESTADO (PRUEBA): " << reg.getEstado();
-    cout << endl;
 }
 
 void VehiculoManager::ListarTodos(){
     int cantidadRegistros = _archivo.contarRegistros();
     for(int i=0; i<cantidadRegistros; i++){
-        Mostrar(_archivo.Leer(i));
+        Vehiculo reg = _archivo.Leer(i);
+        if(reg.getEstado()){
+            Mostrar(reg);
+        }
     }
     cout << endl;
 }
@@ -275,5 +291,66 @@ void VehiculoManager::cargarVectorVehiculosActivos(Vehiculo* vec, int cantidadEl
             vec[indiceVec] = reg;
             indiceVec++; // Incrementa el índice en vec solo si se asigna un vehículo válido
         }
+    }
+}
+
+void VehiculoManager::ListarxGamaVehiculo(){
+    int cantidadRegistros = _archivo.contarRegistros();
+    int gamaVehiculo;
+    bool registroMostrado = false;
+
+    cout << "Ingrese tipo de vehiculo(1- Gama baja, 2- Gama media, 3-Gama alta): ";
+    cin >> gamaVehiculo;
+
+    for(int i=0; i<cantidadRegistros; i++){
+        Vehiculo reg = _archivo.Leer(i);
+        if(gamaVehiculo == reg.getTipo() && reg.getEstado()){
+            Mostrar(reg);
+            registroMostrado = true;
+        }
+    }
+    if(!registroMostrado){
+        cout << endl << "No existen registros con los parametos ingresados." << endl;
+    }
+}
+
+void VehiculoManager::ListarxMarca(){
+    int cantidadRegistros = _archivo.contarRegistros();
+    string marca;
+    bool registroMostrado = false;
+
+    cout << "Ingrese marca de vehiculos a consultar: ";
+    cin >> marca;
+
+    for(int i=0; i<cantidadRegistros; i++){
+        Vehiculo reg = _archivo.Leer(i);
+        if(marca == reg.getMarca() && reg.getEstado()){
+            Mostrar(reg);
+            registroMostrado = true;
+        }
+    }
+    if(!registroMostrado){
+        cout << endl << "No existen registros con los parametos ingresados." << endl;
+    }
+}
+
+void VehiculoManager::ListarxAnioProduccion(){
+
+    int cantidadRegistros = _archivo.contarRegistros();
+    int anio;
+    bool registroMostrado = false;
+
+    cout << "Ingrese año de produccion de vehiculos: ";
+    cin >> anio;
+
+    for(int i=0; i<cantidadRegistros; i++){
+        Vehiculo reg = _archivo.Leer(i);
+        if(anio == reg.getAnioDeProduccion() && reg.getEstado()){
+            Mostrar(reg);
+            registroMostrado = true;
+        }
+    }
+    if(!registroMostrado){
+        cout << endl << "No existen registros con los parametos ingresados." << endl;
     }
 }

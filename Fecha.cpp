@@ -93,6 +93,15 @@ bool Fecha::operator==(Fecha f){
     }
 }
 
+bool Fecha::operator != (Fecha f){
+    if(_dia == f.getDia() && _mes == f.getMes() && _anio == f.getAnio()){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
 bool Fecha::operator > (Fecha f){
     if (_anio > f.getAnio()){
         return true;
