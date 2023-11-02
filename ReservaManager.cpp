@@ -2,6 +2,7 @@
 #include "Vehiculo.h"
 #include <iostream>
 #include <algorithm>
+#include <iomanip>
 using namespace std;
 
 void ReservaManager::Cargar()
@@ -99,7 +100,8 @@ void ReservaManager::Cargar()
         }
         //Se validan si el vehiculo esta disponible en las fechas seleccionadas
         CargarVectorPorNroPatente(patenteVehiculo, cantidadReservasConMismaPatente, reservasConMismaPatente);
-        if(validarDisponibilidadVehiculo(reg.getFechaInicio(), reg.getFechaFin(), reservasConMismaPatente, cantidadReservasConMismaPatente))
+        //ordenarReservasPorFecha(reservasConMismaPatente, cantidadReservasConMismaPatente);
+        if(!validarDisponibilidadVehiculo(reg.getFechaInicio(), reg.getFechaFin(), reservasConMismaPatente, cantidadReservasConMismaPatente))
         {
             cout << "El vehiculo no se encuentra disponible para las fechas indicadas. Carga canceladad." << endl;
             return;
@@ -107,6 +109,8 @@ void ReservaManager::Cargar()
         delete []reservasConMismaPatente;
     }
 
+    cout << endl;
+    mostrarTituloReservas();
     Mostrar(reg);
     char confirmacion;
     cout << endl << "Desea guardar el siguiente registro (S/N)?: " << endl;
@@ -142,6 +146,7 @@ void ReservaManager::Eliminar()
     {
         Reserva reg = _archivo.Leer(posicion);
         cout << "Registro a eliminar: " << endl;
+        mostrarTituloReservas();
         Mostrar(reg);
 
         char confirmacion;
@@ -167,25 +172,25 @@ void ReservaManager::Eliminar()
 
 void ReservaManager::Mostrar(Reserva reg)
 {
-    cout << "---------------------------" << endl;
-    cout << "ID Reserva: " << reg.getIdReserva() << endl;
-    cout << "Documento del cliente: " << reg.getDocCliente() << endl;
-    cout << "Vehiculo alquilado: " << reg.getPatenteVehiculo() << endl;
-    cout << "Importe del contrato: " << reg.getImporteAlquiler() << endl;
-    cout << "Fecha de Inicio: " << reg.getFechaInicio().toString() << endl;
-    cout << "Fecha de Fin: " << reg.getFechaFin().toString() << endl;
+    cout << left << setw(15) << reg.getIdReserva();
+    cout << left << setw(25) << reg.getDocCliente();
+    cout << left << setw(25) << reg.getPatenteVehiculo();
+    cout << "$" << left << setw(25) << reg.getImporteAlquiler();
+    cout << left << setw(20) << reg.getFechaInicio().toString();
+    cout << left << setw(20) << reg.getFechaFin().toString() << endl << endl;
 }
 
 void ReservaManager::ListarTodos()
 {
+    ReservaManager::mostrarTituloReservas();
+
     int cantidadRegistros = _archivo.contarRegistros();
     for(int i=0; i<cantidadRegistros; i++)
     {
         Reserva reg = _archivo.Leer(i);
-        //if(reg.getEstado())
-        //{
+        if(reg.getEstado()){
             Mostrar(reg);
-        //}
+        }
     }
     cout << endl;
 }
@@ -209,6 +214,10 @@ void ReservaManager::ListarxID()
     int id, posicion;
     cout << "Ingrese ID de Reserva a buscar: ";
     cin >> id;
+    cout << endl;
+
+    ReservaManager::mostrarTituloReservas();
+
     posicion = _archivo.Buscar(id);
     if (posicion >= 0)
     {
@@ -217,9 +226,8 @@ void ReservaManager::ListarxID()
     }
     else
     {
-        cout << "ID de Reserva no encontrado.";
+        cout << endl << "ID de Reserva no encontrado." << endl << endl;
     }
-    cout << endl;
 }
 
 int ReservaManager::generarReservaId()
@@ -248,6 +256,7 @@ int ReservaManager::contarReservasxPatentes(std::string patente)
 void ReservaManager::CargarVectorPorNroPatente(std::string patente, int cantidadElementos, Reserva* vec)
 {
     int cantidadRegistros = _archivo.contarRegistros();
+    int contador = 0;
     for(int i=0; i<cantidadElementos; i++)
     {
         for(int x=0; x<cantidadRegistros; x++)
@@ -255,7 +264,11 @@ void ReservaManager::CargarVectorPorNroPatente(std::string patente, int cantidad
             Reserva reg = _archivo.Leer(x);
             if(patente == reg.getPatenteVehiculo() && reg.getEstado())
             {
-                vec[i] = reg;
+                if (contador < cantidadElementos)
+                {
+                    vec[contador] = reg;
+                    contador++; // Incrementa el contador para el siguiente elemento
+                }
             }
         }
     }
@@ -266,7 +279,7 @@ bool ReservaManager::validarDisponibilidadVehiculo(Fecha fInicio, Fecha fFin, Re
 {
     for(int i=0; i<cantidadElementos; i++)
     {
-        if(fInicio > vec[i].getFechaInicio() && fInicio < vec[i].getFechaFin() || fFin > vec[i].getFechaInicio())
+        if(fInicio > vec[i].getFechaInicio() && fInicio < vec[i].getFechaFin() || fFin > vec[i].getFechaInicio() && fFin < vec[i].getFechaFin())
         {
             return false;
         }
@@ -274,23 +287,30 @@ bool ReservaManager::validarDisponibilidadVehiculo(Fecha fInicio, Fecha fFin, Re
     return true;
 }
 //Validar si el vehiculo esta disponible para las fechas seleccionadas en el metodo "extenderReserva()"
-/*
-bool ReservaManager::validarDisponibilidadVehiculo(Fecha nuevaFechaFin, Reserva* vec, int cantidadElementos)
+bool ReservaManager::validarDisponibilidadVehiculoExtension(Fecha fInicio, Fecha nuevaFechaFin, Reserva* vec, int cantidadElementos)
 {
-
+    for(int i=0; i<cantidadElementos; i++)
+    {
+        if((nuevaFechaFin > vec[i].getFechaInicio() && nuevaFechaFin < vec[i].getFechaFin()) || (fInicio < vec[i].getFechaInicio() && nuevaFechaFin < vec[i].getFechaFin()))
+        {
+            return false;
+        }
+    }
+    return true;
 }
-*/
+
 void ReservaManager::ListarxRangoDeImporte()
 {
     float importeDesde, importeHasta;
     int cantidadRegistros = _archivo.contarRegistros();
     bool registroMostrado = false;
 
-    cout << "Ingrese el importe minimo de la consulta: $";
+    cout << "Ingrese el importe mínimo de la consulta: $";
     cin >> importeDesde;
-    cout << "Ingrese el importe maximo de la consulta: $"; //Se ingresan los importes de la
+    cout << "Ingrese el importe máximo de la consulta: $"; //Se ingresan los importes de la
     cin >> importeHasta;
 
+    ReservaManager::mostrarTituloReservas();
     for(int i=0; i<cantidadRegistros; i++)
     {
         Reserva reg = _archivo.Leer(i);
@@ -303,7 +323,7 @@ void ReservaManager::ListarxRangoDeImporte()
 
     if(registroMostrado)
     {
-        cout << endl << "No existen registros con los parametos ingresados." << endl;
+        cout << endl << "No existen registros con los parámetos ingresados." << endl;
     }
 }
 
@@ -319,6 +339,7 @@ void ReservaManager::ListarxFechaDeInicioReserva()
     cin >> anio;
     Fecha fechaConsulta(Fecha(dia, mes, anio));
 
+    ReservaManager::mostrarTituloReservas();
     for(int i=0; i<cantidadRegistros; i++)
     {
         Reserva reg = _archivo.Leer(i);
@@ -330,7 +351,7 @@ void ReservaManager::ListarxFechaDeInicioReserva()
     }
     if(!registroMostrado)
     {
-        cout << endl << "No existen registros con los parametos ingresados." << endl;
+        cout << endl << "No existen registros con los parámetos ingresados." << endl << endl;
     }
 }
 
@@ -341,7 +362,7 @@ void ReservaManager::recaudacionxGama()
     Fecha fechaActual;
     int anioActual = fechaActual.getAnio();
 
-    cout << "La recaudacion por gama del año actual" << anioActual << " actual fue la siguiente: " << endl << endl;
+    cout << "La recaudación por gama del año actual " << anioActual << " fue la siguiente: " << endl << endl;
 
     for(int i=0; i<cantidadRegistros; i++)
     {
@@ -353,9 +374,10 @@ void ReservaManager::recaudacionxGama()
         if(vehiculo.getTipo() == 3 && reserva.getFechaInicio().getAnio() == anioActual) vAcuGamaVehiculo[2] += reserva.getImporteAlquiler();
     }
 
-    cout << "Recaudación Gama Baja: " << vAcuGamaVehiculo[0] << endl;
-    cout << "Recaudación Gama Media: " << vAcuGamaVehiculo[1] << endl;
-    cout << "Recaudación Gama Alta: " << vAcuGamaVehiculo[2] << endl;
+    cout << endl << "Recaudación Gama Baja: " << vAcuGamaVehiculo[0] << endl;
+    cout << endl << "Recaudación Gama Media: " << vAcuGamaVehiculo[1] << endl;
+    cout << endl << "Recaudación Gama Alta: " << vAcuGamaVehiculo[2] << endl;
+    cout << endl << endl;
 }
 
 void ReservaManager::recaudacionAnual()
@@ -381,55 +403,20 @@ void ReservaManager::recaudacionAnual()
     {
         cout << "La recaudación del mes " << x+1 << " fue de: $" << recaudacionMensual[x] << endl;
     }
+    cout << endl;
 }
 
-/* ROMPI TODO, para ver
-void ReservaManager::gamaConReservaMasExtensa(){
-    int cantidadDias;
-    int cantidadRegistros = _archivo.contarRegistros();
-    int mayorCantidadDias[3]{};
-
-    for(int i=0; i<cantidadRegistros; i++){
-        Reserva reserva = _archivo.Leer(i);
-        int posRegistroVehiculo = _archivoVehiculo.Buscar(reserva.getPatenteVehiculo());
-        Vehiculo vehiculo = _archivoVehiculo.Leer(posRegistroVehiculo);
-        int diasDeReserva = contarDiasEntreFechas(reserva.getFechaInicio(), reserva.getFechaFin());
-
-        if(vehiculo.getTipo() == 1 && diasDeReserva > mayorCantidadDias[0]){
-            mayorCantidadDias[0] = diasDeReserva;
-        }
-        if(vehiculo.getTipo() == 2 && diasDeReserva > mayorCantidadDias[1]){
-            mayorCantidadDias[1] = diasDeReserva;
-        }
-        if(vehiculo.getTipo() == 3 && diasDeReserva > mayorCantidadDias[2]){
-            mayorCantidadDias[2] = diasDeReserva;
-        }
-    }
-
-    for(int x=0; x<3; x++){
-        if(x == 0){cout << "La reserva más extensa de un vehiculo Gama Baja fue de: " << mayorCantidadDias[x] << " días." << endl;}
-        if(x == 1){cout << "La reserva más extensa de un vehiculo Gama Media fue de: " << mayorCantidadDias[x] << " días." << endl;}
-        if(x == 2){cout << "La reserva más extensa de un vehiculo Gama Alta fue de: " << mayorCantidadDias[x] << " días." << endl;}
-    }
-
+void ReservaManager::mostrarTituloReservas()
+{
+    cout << left << setw(15) << "ID Reserva";
+    cout << left << setw(25) << "Documento del cliente";
+    cout << left << setw(25) << "Vehículo alquilado";
+    cout << left << setw(25) << "Importe del contrato";
+    cout << left << setw(20) << "Fecha de Inicio";
+    cout << left << setw(20) << "Fecha de Fin" << endl;
 }
-*/
-
-//Funcion para contar la cantidad de dias entre fechas de inicio y fechas de fin de reservas
-/*
-int ReservaManager::contarDiasEntreFechas(Fecha fechaInico, Fecha fechaFin){
-    int contador = 0;
-    Fecha fecha = fechaInico;
-    while(fecha != fechaFin){
-        fechaInico.agregarDias(1);
-        contador++;
-    }
-    contador;
-}
-*/
 
 //Extiende la fecha fin de un contrato existente.
-/*
 void ReservaManager::extenderReserva()
 {
     int id, posicion;
@@ -440,14 +427,16 @@ void ReservaManager::extenderReserva()
     cout << endl << "Ingrese el ID de la reserva a extender: #";
     cin >> id;
 
-    posicion = _archivo.Buscar(id);
+    posicion = _archivo.Buscar(id); //Se bisca el id en cuestion
     if(posicion == -1)
     {
-        cout << endl << "ID de reserva no existe. Cancelado." << endl << endl;
+        cout << endl << "ID de reserva no existe. Operación cancelada." << endl << endl;
         return;
     }
-    cout << endl << "Registro seleccionado: " << endl;
+    cout << endl << "Registro seleccionado: " << endl << endl;
     Reserva reg = _archivo.Leer(posicion);
+
+    mostrarTituloReservas();
     Mostrar(reg);
 
     if(fechaHoy > reg.getFechaFin())
@@ -465,7 +454,7 @@ void ReservaManager::extenderReserva()
 
     if (fechaExtension < reg.getFechaFin())
     {
-        cout << endl << "La fecha de extension no puede ser menor a la fecha de fin original." << endl << endl;
+        cout << endl << "La fecha de extensión no puede ser menor a la fecha de fin original." << endl << endl;
         return;
     }
 
@@ -478,15 +467,20 @@ void ReservaManager::extenderReserva()
         return;
     }
 
-    if(validarDisponibilidadVehiculo(fechaExtension, ReservasMismaPatente, cantidadReservasConMismaPatente))
+    CargarVectorPorNroPatente(reg.getPatenteVehiculo(), cantidadReservasConMismaPatente, ReservasMismaPatente);
+    ordenarReservasPorFecha(ReservasMismaPatente, cantidadReservasConMismaPatente);
+
+    if(validarDisponibilidadVehiculoExtension(reg.getFechaInicio(), fechaExtension, ReservasMismaPatente, cantidadReservasConMismaPatente))
     {
         reg.setFechaFin(fechaExtension);
     }
-    else{
+    else
+    {
         cout << endl << "El vehiculo no se encuentra disponible para la fecha de extensión" << endl;
         return;
     }
 
+    mostrarTituloReservas();
     Mostrar(reg);
     cout << "Desea guardar el siguiente registro modificado (S/N): ";
 
@@ -503,6 +497,21 @@ void ReservaManager::extenderReserva()
             cout << endl << "Oops, error al modificar el registro. Cancelado." << endl;
         }
     }
+    else
+    {
+        cout << "Operación cancelada." << endl;
+    }
     delete[] ReservasMismaPatente;
 }
-*/
+
+void ReservaManager::ordenarReservasPorFecha(Reserva* reservas, int cantidadElementos){
+    for(int i=0; i<cantidadElementos; i++){
+        for(int x=0; i<cantidadElementos - 1; i++){
+            if(reservas[x=1].getFechaInicio() > reservas[x=1].getFechaInicio()){
+                Reserva aux = reservas[x];
+                reservas[x] = reservas[x+1];
+                reservas[x+1] = aux;
+            }
+        }
+    }
+}

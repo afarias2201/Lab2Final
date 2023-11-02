@@ -14,7 +14,7 @@ void MenuReserva::Mostrar(){
         std::cout << "2 - ELIMINAR" << endl;
         std::cout << "3 - LISTADO DE RESERVA" << endl;
         std::cout << "4 - BUSCAR POR ID DE RESERVA" << endl;
-        std::cout << "5 - RESERVA MAS EXTENSA POR GAMA" << endl;
+        std::cout << "5 - EXTENSIÓN DE RESERVA" << endl;
         std::cout << "6 - BUSCAR POR RANGOS DE IMPORTE DE RESERVA" << endl;
         std::cout << "7 - BUSCAR RESERVAS POR FECHA DE INICIO" << endl;
         std::cout << "8 - RECAUDACION POR GAMA" << endl;
@@ -39,7 +39,7 @@ void MenuReserva::Mostrar(){
             break;
         case 5:
             //_manager.gamaConReservaMasExtensa();
-            //_manager.extenderReserva();
+            _manager.extenderReserva();
             break;
         case 6:
             _manager.ListarxRangoDeImporte();

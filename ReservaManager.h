@@ -18,7 +18,7 @@ class ReservaManager
         int Buscar(int idReserva);
         void CargarVectorPorNroPatente(std::string patente, int cantidadElementos, Reserva* vec);
         bool validarDisponibilidadVehiculo(Fecha fInicio, Fecha fFin, Reserva* vec, int cantidadElementos);
-        bool validarDisponibilidadVehiculo(Fecha nuevaFechaFin, Reserva* vec, int cantidadElementos);
+        bool validarDisponibilidadVehiculoExtension(Fecha fInicio, Fecha nuevaFechaFin, Reserva* vec, int cantidadElementos);
         int contarReservasxPatentes(std::string patente);
         void extenderReserva();
 
@@ -39,6 +39,8 @@ class ReservaManager
         VehiculoManager _vehiculoManager;
         //int contarDiasEntreFechas(Fecha fechaInico, Fecha fechaFin);
         int generarReservaId();
+        void mostrarTituloReservas();
+        void ordenarReservasPorFecha(Reserva* reservas, int cantidadElementos);
 };
 
 #endif // RESERVAMANAGER_H

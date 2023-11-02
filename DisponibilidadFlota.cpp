@@ -4,6 +4,7 @@
 #include "VehiculoManager.h"
 #include "ReservaManager.h"
 #include <iostream>
+#include <iomanip>
 
 void DisponibilidadFlota::generarDisponibilidad()
 {
@@ -65,6 +66,7 @@ void DisponibilidadFlota::generarDisponibilidad()
         delete[] vVehiculo;
     }
     Mostrar(vecDispo, cantidadVehiculos); //Se muestra la dispo pasando el vector de vehiculos de la dispo y la cantidad de elementos
+
     delete[] vecDispo;
     system("pause");
 }
@@ -165,9 +167,35 @@ bool DisponibilidadFlota::validarSiEstaDisponibleHoy(Fecha fechaHoy, Reserva* re
 
 void DisponibilidadFlota::Mostrar(DisponibilidadFlota* vDispo, int cantidadElementos)
 {
+    std::cout << "DISPONIBILIDAD DE FLOTA DE VEHÍCULOS." << std::endl;
     std::cout << "Fecha de Ejecucion: " << fechaDeConsulta.toString() << std::endl << std::endl;
-    for(int i=0; i<cantidadElementos; i++)
+
+    // Ajusta la anchura de los campos y alinea a la izquierda
+    std::cout
+            << std::left << std::setw(15) << "Patente"
+            << std::left << std::setw(15) << "Marca"
+            << std::left << std::setw(15) << "Modelo"
+            << std::left << std::setw(10) << "Año"
+            << std::left << std::setw(15) << "Estado"
+            << std::left << std::setw(15) << "Tipo" << std::endl << std::endl;
+
+    for (int i = 0; i < cantidadElementos; i++)
     {
-        std::cout << vDispo[i].getPatenteDispo() << "   -   " << vDispo[i].getMarcaDispo() << "   -   " << vDispo[i].getModeloDispo() << "   -   " << vDispo[i].getAnioProduccionDispo() << "   -   " << vDispo[i].getEstadoVehiculoDispo() << "   -   " << vDispo[i].getTipoDispo() << std::endl << std::endl;
+        // Ajusta la anchura de los campos y alinea a la izquierda
+        std::cout
+                << std::left << std::setw(15) << vDispo[i].getPatenteDispo()
+                << std::left << std::setw(15) << vDispo[i].getMarcaDispo()
+                << std::left << std::setw(15) << vDispo[i].getModeloDispo()
+                << std::left << std::setw(10) << vDispo[i].getAnioProduccionDispo()
+                << std::left << std::setw(15) << vDispo[i].getEstadoVehiculoDispo()
+                << std::left << std::setw(15) << vDispo[i].getTipoDispo()
+                << std::endl << std::endl;
     }
+    /*
+        std::cout << "Fecha de Ejecucion: " << fechaDeConsulta.toString() << std::endl << std::endl;
+        for(int i=0; i<cantidadElementos; i++)
+        {
+            std::cout << vDispo[i].getPatenteDispo() << "   -   " << vDispo[i].getMarcaDispo() << "   -   " << vDispo[i].getModeloDispo() << "   -   " << vDispo[i].getAnioProduccionDispo() << "   -   " << vDispo[i].getEstadoVehiculoDispo() << "   -   " << vDispo[i].getTipoDispo() << std::endl << std::endl;
+        }
+    */
 }

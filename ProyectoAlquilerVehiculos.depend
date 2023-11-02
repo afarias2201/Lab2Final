@@ -161,7 +161,7 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menureserva.h
 	"ReservaManager.h"
 
-1698619932 c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.h
+1698884492 c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.h
 	"Reserva.h"
 	"ReservaArchivo.h"
 	"VehiculoArchivo.h"
@@ -173,7 +173,7 @@
 	<string>
 	"Fecha.h"
 
-1698512395 c:\users\steam\onedrive\escritorio\git\lab2final\fecha.h
+1698884209 c:\users\steam\onedrive\escritorio\git\lab2final\fecha.h
 	<string>
 
 1697898420 c:\users\steam\onedrive\escritorio\git\lab2final\reservaarchivo.h
@@ -209,15 +209,16 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menueditarcliente.h
 	"Cliente.h"
 
-1698512550 source:c:\users\steam\onedrive\escritorio\git\lab2final\fecha.cpp
+1698884209 source:c:\users\steam\onedrive\escritorio\git\lab2final\fecha.cpp
 	"Fecha.h"
 	<ctime>
 	<iostream>
 
-1697765551 source:c:\users\steam\onedrive\escritorio\git\lab2final\main.cpp
+1698707181 source:c:\users\steam\onedrive\escritorio\git\lab2final\main.cpp
 	<iostream>
 	"AppAlquilerVehiculos.h"
 	"ClienteManager.h"
+	<locale.h>
 
 1698361042 source:c:\users\steam\onedrive\escritorio\git\lab2final\menucliente.cpp
 	"MenuCliente.h"
@@ -234,7 +235,7 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menueditarvehiculo.h
 	"Vehiculo.h"
 
-1698619907 source:c:\users\steam\onedrive\escritorio\git\lab2final\menureserva.cpp
+1698709814 source:c:\users\steam\onedrive\escritorio\git\lab2final\menureserva.cpp
 	"MenuReserva.h"
 	<iostream>
 
@@ -265,19 +266,21 @@
 	<algorithm>
 	"MenuEditarVehiculo.h"
 
-1698619907 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.cpp
+1698967991 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.cpp
 	"ReservaManager.h"
 	"Vehiculo.h"
 	<iostream>
 	<algorithm>
+	<iomanip>
 
-1698361085 source:c:\users\steam\onedrive\escritorio\git\lab2final\disponibilidadflota.cpp
+1698881042 source:c:\users\steam\onedrive\escritorio\git\lab2final\disponibilidadflota.cpp
 	"DisponibilidadFlota.h"
 	<cstring>
 	"Vehiculo.h"
 	"VehiculoManager.h"
 	"ReservaManager.h"
 	<iostream>
+	<iomanip>
 
 1698112968 c:\users\steam\onedrive\escritorio\git\lab2final\disponibilidadflota.h
 	"VehiculoArchivo.h"
