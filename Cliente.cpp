@@ -5,7 +5,11 @@ Cliente::Cliente(){
     _estado = true;
 }
 
-int Cliente::getDNI() const{
+int Cliente::getID() const{
+    return _id;
+}
+
+std::string Cliente::getDNI() const{
     return _dni;
 }
 std::string Cliente::getNombres() const{
@@ -27,8 +31,12 @@ bool Cliente::getEstado() const{
     return _estado;
 }
 
-void Cliente::setDNI(int did){
-    _dni = did;
+void Cliente::setID(int id){
+    _id = id;
+}
+
+void Cliente::setDNI(std::string dni){
+    strcpy(_dni, dni.c_str());
 }
 void Cliente::setNombres(std::string nombres){
     strcpy(_nombres, nombres.c_str());

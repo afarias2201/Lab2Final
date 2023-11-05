@@ -7,8 +7,8 @@ using namespace std;
 
 void ReservaManager::Cargar()
 {
-    int id, numDniCliente;
-    string patenteVehiculo;
+    int id;
+    string  patenteVehiculo,numDniCliente;
     float importeAlquiler;
     int diaInicio, mesInicio, anioInicio, diaFin, mesFin, anioFin;
 
@@ -17,6 +17,9 @@ void ReservaManager::Cargar()
 
     id = generarReservaId();
     cout << "ID a generar: " << id << endl;
+
+    listarVehiculos();
+
     cout << "Patente del vehiculo a alquilar: ";
     cin >> patenteVehiculo;
     transform(patenteVehiculo.begin(), patenteVehiculo.end(), patenteVehiculo.begin(), ::toupper);
@@ -514,4 +517,15 @@ void ReservaManager::ordenarReservasPorFecha(Reserva* reservas, int cantidadElem
             }
         }
     }
+}
+
+void ReservaManager::listarVehiculos(){
+    int cantidadRegistros = _archivoVehiculo.contarRegistros();
+
+    cout << endl;
+    for(int i=0; i<cantidadRegistros; i++){
+        Vehiculo vehiculo = _archivoVehiculo.Leer(i);
+        cout << vehiculo.getPatente() << "\t" << vehiculo.getModelo() << "\t" << vehiculo.getMarca() << "\t" << vehiculo.getTipo() << endl;
+    }
+    cout << endl;
 }

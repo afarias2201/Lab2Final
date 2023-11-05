@@ -7,7 +7,8 @@ class Cliente
 {
     public:
         Cliente();
-        int getDNI() const;
+        int getID() const;
+        std::string getDNI() const;
         std::string getNombres() const;
         std::string getApellidos() const;
         std::string getDomicilio() const;
@@ -15,7 +16,8 @@ class Cliente
         std::string getEmail() const;
         bool getEstado() const;
 
-        void setDNI(int dni);
+        void setID(int id);
+        void setDNI(std::string dni);
         void setNombres(std::string nombres);
         void setApellidos(std::string apellidos);
         void setDomicilio(std::string domicilio);
@@ -24,7 +26,8 @@ class Cliente
         void setEstado(bool estado);
 
     private:
-        int _dni;
+        int _id;
+        char _dni[8];
         char _nombres[50];
         char _apellidos[50];
         char _domicilio[50];

@@ -1,6 +1,7 @@
 #ifndef CLIENTEARCHIVO_
 #define CLIENTEARCHIVO_
 #include "Cliente.h"
+#include <iostream>
 
 
 class ClienteArchivo
@@ -11,7 +12,7 @@ class ClienteArchivo
         bool Guardar(Cliente reg, int nroRegistro);
         int contarRegistros();
         Cliente Leer(int nroRegistro);
-        int Buscar(int dniCliente);
+        int Buscar(std::string dniCliente);
 
     private:
         std::string _nombreArchivo;

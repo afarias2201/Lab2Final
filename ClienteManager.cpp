@@ -4,10 +4,14 @@ using namespace std;
 #include "MenuEditarCliente.h"
 
 void ClienteManager::Cargar(){
-    int dni;
-    string nombres, apellidos, domicilio, telefono, email;
+    int id;
+    string dni, nombres, apellidos, domicilio, telefono, email;
 
     cout << "Ingrese informacion del nuevo cliente." << endl;
+
+    id = generarIdCliente();
+    cout << "ID de cliente: " << id << endl;
+
     cout << "Nro. de DNI: ";
     cin >> dni;
     if(_archivo.Buscar(dni)!= -1){
@@ -28,6 +32,7 @@ void ClienteManager::Cargar(){
     getline(cin, email);
 
     Cliente reg;
+    reg.setID(id);
     reg.setDNI(dni);
     reg.setNombres(nombres);
     reg.setApellidos(apellidos);
@@ -57,7 +62,8 @@ void ClienteManager::Cargar(){
 }
 
 void ClienteManager::Editar(){
-    int dni, posicion;
+    string dni;
+    int posicion;
     cout << "Ingrese DNI del cliente a editar: ";
     cin >> dni;
 
@@ -81,7 +87,7 @@ void ClienteManager::Editar(){
 }
 
 void ClienteManager::Eliminar(){
-    int dni;
+    string dni;
     int posicion;
 
     cout << "Ingrese nro. DNI a eliminar: ";
@@ -112,6 +118,7 @@ void ClienteManager::Eliminar(){
 void ClienteManager::Mostrar(Cliente reg){
     if(reg.getEstado()){
         cout << "---------------------------" << endl;
+        cout << "ID: " << reg.getID() << endl;
         cout << "DNI: " << reg.getDNI() << endl;
         cout << "APELLIDOS: " << reg.getApellidos() << endl;
         cout << "NOMBRES: " << reg.getNombres() << endl;
@@ -130,7 +137,7 @@ void ClienteManager::ListarTodos(){
     }
     cout << endl;
 }
-int ClienteManager::Buscar(int dni){
+int ClienteManager::Buscar(string dni){
     int cantidadRegistros = _archivo.contarRegistros();
     for (int i=0; i<cantidadRegistros; i++){
         Cliente reg = _archivo.Leer(i);
@@ -141,7 +148,7 @@ int ClienteManager::Buscar(int dni){
     return -1;
 }
 void ClienteManager::ListarxDNI(){
-    int dni;
+    string dni;
     int posicion;
 
     cout << "Ingrese DNI a buscar: ";
@@ -155,4 +162,8 @@ void ClienteManager::ListarxDNI(){
         cout << "No se pudo encontrar el DNI indicado.";
         cout << endl;
     }
+}
+
+int ClienteManager::generarIdCliente(){
+    return _archivo.contarRegistros() + 1;
 }

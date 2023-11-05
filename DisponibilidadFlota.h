@@ -32,11 +32,14 @@ class DisponibilidadFlota
         VehiculoArchivo _archivoVehiculo = VehiculoArchivo("vehiculo.dat");
 
         Fecha fechaDeConsulta = Fecha();
+        Vehiculo vehiculo;
+        /*
         char _patenteDispo[10];
         char _modeloDispo[10];
         char _marcaDispo[10];
         int _anioDeProduccionDispo;
         int _tipoDispo;
+        */
         int _estadoVehiculo; // 0- Disponible, 1- Alquilado, 2- En taller
         bool validarSiEstaDisponibleHoy(Fecha fechaHoy, Reserva* reserva, int cantidadElementos);
         void cargarRegistrosDeLaDisponibilidad(DisponibilidadFlota* vecDispo, int cantidadVehiculos);

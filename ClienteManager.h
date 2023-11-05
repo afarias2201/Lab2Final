@@ -12,11 +12,12 @@ class ClienteManager
         void Eliminar();
         void Mostrar(Cliente reg);
         void ListarTodos();
-        int Buscar(int dni);
+        int Buscar(std::string dni);
         void ListarxDNI();
 
     private:
         ClienteArchivo _archivo = ClienteArchivo("clientes.dat");
+        int generarIdCliente();
 };
 
 #endif // CLIENTEMANAGER_H

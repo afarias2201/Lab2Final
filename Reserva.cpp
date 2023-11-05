@@ -5,6 +5,7 @@
 Reserva::Reserva(){
     _estado = true;
 }
+
 Reserva::Reserva(std::string patenteVehiculo, float importeAlquiler, Fecha fechaInicio, Fecha fechaFin, bool estado){
     strcpy(_patenteVehiculo, patenteVehiculo.c_str());
     _importeAlquiler = importeAlquiler;
@@ -16,7 +17,7 @@ Reserva::Reserva(std::string patenteVehiculo, float importeAlquiler, Fecha fecha
 int Reserva::getIdReserva() const{
     return _idReserva;
 }
-int Reserva::getDocCliente() const{
+std::string Reserva::getDocCliente() const{
     return _numeroDocCliente;
 }
 std::string Reserva::getPatenteVehiculo() const{
@@ -38,8 +39,8 @@ bool Reserva::getEstado() const{
 void Reserva::setIdReserva(int idReserva){
     _idReserva = idReserva;
 }
-void Reserva::setDocCliente (int numDoc){
-    _numeroDocCliente = numDoc;
+void Reserva::setDocCliente (std::string numDoc){
+    strcpy(_numeroDocCliente, numDoc.c_str());
 }
 void Reserva::setPatenteVehiculo(std::string patenteVehiculo){
     transform(patenteVehiculo.begin(), patenteVehiculo.end(), patenteVehiculo.begin(), ::toupper);

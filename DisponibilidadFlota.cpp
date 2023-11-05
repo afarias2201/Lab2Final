@@ -28,13 +28,13 @@ void DisponibilidadFlota::generarDisponibilidad()
             std::cout << "Error de memoria." << std::endl;
         }
 
-        vehiculoManager.cargarVectorVehiculosActivos(vVehiculo, cantidadVehiculos); //Se carga el vector de vehiculos con los vehiculos activos
+        vehiculoManager.cargarVectorVehiculosActivos(vVehiculo, cantidadVehiculos);     //Se carga el vector de vehiculos con los vehiculos activos
 
-        vecDispo[i].setPatenteDispo(vVehiculo[i].getPatente());
-        vecDispo[i].setMarcaDispo(vVehiculo[i].getMarca());
-        vecDispo[i].setModeloDispo(vVehiculo[i].getModelo());                       //Se le settea los datos del vehiculo
-        vecDispo[i].setAnioProduccionDispo(vVehiculo[i].getAnioDeProduccion());
-        vecDispo[i].setTipoDispo(vVehiculo[i].getTipo());
+        vecDispo[i].vehiculo.setPatente(vVehiculo[i].getPatente());
+        vecDispo[i].vehiculo.setMarca(vVehiculo[i].getMarca());
+        vecDispo[i].vehiculo.setModelo(vVehiculo[i].getModelo());                       //Se le settea los datos del vehiculo
+        vecDispo[i].vehiculo.setAnioProduccion(vVehiculo[i].getAnioDeProduccion());
+        vecDispo[i].vehiculo.setTipo(vVehiculo[i].getTipo());
 
         ReservaManager reservaManager;
         int cantidadReservasPorPatente = reservaManager.contarReservasxPatentes(vVehiculo[i].getPatente());
@@ -73,23 +73,23 @@ void DisponibilidadFlota::generarDisponibilidad()
 
 void DisponibilidadFlota::setPatenteDispo(std::string patente)
 {
-    strcpy(_patenteDispo, patente.c_str());
+    vehiculo.setPatente(patente);
 }
 void DisponibilidadFlota::setModeloDispo(std::string modelo)
 {
-    strcpy(_modeloDispo, modelo.c_str());
+    vehiculo.setModelo(modelo);
 }
 void DisponibilidadFlota::setMarcaDispo(std::string marca)
 {
-    strcpy(_marcaDispo, marca.c_str());
+    vehiculo.setMarca(marca);
 }
 void DisponibilidadFlota::setAnioProduccionDispo(int anio)
 {
-    _anioDeProduccionDispo = anio;
+    vehiculo.setAnioProduccion(anio);
 }
 void DisponibilidadFlota::setTipoDispo(int tipo)
 {
-    _tipoDispo = tipo;
+    vehiculo.setTipo(tipo);
 }
 void DisponibilidadFlota::setEstadoVehiculoDispo(int estadoVehiculo)
 {
@@ -109,27 +109,27 @@ void DisponibilidadFlota::setEstadoVehiculoDispo(int estadoVehiculo)
 
 std::string DisponibilidadFlota::getPatenteDispo() const
 {
-    return _patenteDispo;
+    return vehiculo.getPatente();
 }
 std::string DisponibilidadFlota::getModeloDispo() const
 {
-    return _modeloDispo;
+    return vehiculo.getModelo();
 }
 std::string DisponibilidadFlota::getMarcaDispo() const
 {
-    return _marcaDispo;
+    return vehiculo.getMarca();
 }
 int DisponibilidadFlota::getAnioProduccionDispo() const
 {
-    return _anioDeProduccionDispo;
+    return vehiculo.getAnioDeProduccion();
 }
 std::string DisponibilidadFlota::getTipoDispo() const
 {
-    if(_tipoDispo == 1)
+    if(vehiculo.getTipo() == 1)
     {
         return "Gama baja";
     }
-    else if(_tipoDispo == 2)
+    else if(vehiculo.getTipo() == 2)
     {
         return "Gama media";
     }

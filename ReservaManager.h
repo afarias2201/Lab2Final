@@ -37,10 +37,10 @@ class ReservaManager
         VehiculoArchivo _archivoVehiculo = VehiculoArchivo("vehiculo.dat");
         ClienteArchivo _archivoCliente = ClienteArchivo("clientes.dat");
         VehiculoManager _vehiculoManager;
-        //int contarDiasEntreFechas(Fecha fechaInico, Fecha fechaFin);
         int generarReservaId();
         void mostrarTituloReservas();
         void ordenarReservasPorFecha(Reserva* reservas, int cantidadElementos);
+        void listarVehiculos();
 };
 
 #endif // RESERVAMANAGER_H

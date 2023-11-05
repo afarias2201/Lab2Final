@@ -1,4 +1,5 @@
 #include "ClienteArchivo.h"
+#include <iostream>
 
 ClienteArchivo::ClienteArchivo(std::string nombreArchivo){
     _nombreArchivo = nombreArchivo;
@@ -45,7 +46,7 @@ Cliente ClienteArchivo::Leer(int nroRegistro){
     fclose(p);
     return reg;
 }
-int ClienteArchivo::Buscar(int dniCliente){
+int ClienteArchivo::Buscar(std::string dniCliente){
     FILE *p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr){
     return -1;
