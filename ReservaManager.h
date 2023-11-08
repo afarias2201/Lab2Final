@@ -22,6 +22,9 @@ class ReservaManager
         int contarReservasxPatentes(std::string patente);
         void extenderReserva();
 
+        void HacerCopiaSeguridad();
+        void RestaurarCopiaSeguridad();
+
         //consultas
         void ListarxID();
         void ListarxRangoDeImporte();
@@ -34,6 +37,7 @@ class ReservaManager
 
     private:
         ReservaArchivo _archivo = ReservaArchivo("reserva.dat");
+        ReservaArchivo _archivoBkp = ReservaArchivo("reserva.bkp");
         VehiculoArchivo _archivoVehiculo = VehiculoArchivo("vehiculo.dat");
         ClienteArchivo _archivoCliente = ClienteArchivo("clientes.dat");
         VehiculoManager _vehiculoManager;

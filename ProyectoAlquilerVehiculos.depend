@@ -146,7 +146,7 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menuvehiculos.h
 	"VehiculoManager.h"
 
-1698364215 c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.h
+1699400736 c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.h
 	"Vehiculo.h"
 	"VehiculoArchivo.h"
 	<string>
@@ -154,14 +154,14 @@
 1698109115 c:\users\steam\onedrive\escritorio\git\lab2final\vehiculo.h
 	<string>
 
-1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\vehiculoarchivo.h
+1699399839 c:\users\steam\onedrive\escritorio\git\lab2final\vehiculoarchivo.h
 	"Vehiculo.h"
 	<string>
 
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menureserva.h
 	"ReservaManager.h"
 
-1699144270 c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.h
+1699402817 c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.h
 	"Reserva.h"
 	"ReservaArchivo.h"
 	"VehiculoArchivo.h"
@@ -176,14 +176,14 @@
 1698884209 c:\users\steam\onedrive\escritorio\git\lab2final\fecha.h
 	<string>
 
-1697898420 c:\users\steam\onedrive\escritorio\git\lab2final\reservaarchivo.h
+1699402127 c:\users\steam\onedrive\escritorio\git\lab2final\reservaarchivo.h
 	"Reserva.h"
 	<string>
 
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menucliente.h
 	"ClienteManager.h"
 
-1699145757 c:\users\steam\onedrive\escritorio\git\lab2final\clientemanager.h
+1699404412 c:\users\steam\onedrive\escritorio\git\lab2final\clientemanager.h
 	"Cliente.h"
 	"ClienteArchivo.h"
 	"string"
@@ -191,7 +191,7 @@
 1699145704 c:\users\steam\onedrive\escritorio\git\lab2final\cliente.h
 	<string>
 
-1699144476 c:\users\steam\onedrive\escritorio\git\lab2final\clientearchivo.h
+1699403605 c:\users\steam\onedrive\escritorio\git\lab2final\clientearchivo.h
 	"Cliente.h"
 	<iostream>
 
@@ -199,11 +199,11 @@
 	"Cliente.h"
 	<cstring>
 
-1699144444 source:c:\users\steam\onedrive\escritorio\git\lab2final\clientearchivo.cpp
+1699404868 source:c:\users\steam\onedrive\escritorio\git\lab2final\clientearchivo.cpp
 	"ClienteArchivo.h"
 	<iostream>
 
-1699146234 source:c:\users\steam\onedrive\escritorio\git\lab2final\clientemanager.cpp
+1699404731 source:c:\users\steam\onedrive\escritorio\git\lab2final\clientemanager.cpp
 	"ClienteManager.h"
 	<iostream>
 	"MenuEditarCliente.h"
@@ -222,7 +222,7 @@
 	"ClienteManager.h"
 	<locale.h>
 
-1698361042 source:c:\users\steam\onedrive\escritorio\git\lab2final\menucliente.cpp
+1699404731 source:c:\users\steam\onedrive\escritorio\git\lab2final\menucliente.cpp
 	"MenuCliente.h"
 	<iostream>
 
@@ -237,11 +237,11 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menueditarvehiculo.h
 	"Vehiculo.h"
 
-1698709814 source:c:\users\steam\onedrive\escritorio\git\lab2final\menureserva.cpp
+1699403202 source:c:\users\steam\onedrive\escritorio\git\lab2final\menureserva.cpp
 	"MenuReserva.h"
 	<iostream>
 
-1698280165 source:c:\users\steam\onedrive\escritorio\git\lab2final\menuvehiculos.cpp
+1699400888 source:c:\users\steam\onedrive\escritorio\git\lab2final\menuvehiculos.cpp
 	"MenuVehiculos.h"
 	<iostream>
 
@@ -250,25 +250,25 @@
 	<algorithm>
 	<cstring>
 
-1697765551 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservaarchivo.cpp
+1699402549 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservaarchivo.cpp
 	"ReservaArchivo.h"
 
 1698109115 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculo.cpp
 	"Vehiculo.h"
 	<cstring>
 
-1697765551 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculoarchivo.cpp
+1699400082 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculoarchivo.cpp
 	"VehiculoArchivo.h"
 	<cstdio>
 	<cstring>
 
-1698364215 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.cpp
+1699400736 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.cpp
 	"VehiculoManager.h"
 	<iostream>
 	<algorithm>
 	"MenuEditarVehiculo.h"
 
-1699146234 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.cpp
+1699403127 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.cpp
 	"ReservaManager.h"
 	"Vehiculo.h"
 	<iostream>

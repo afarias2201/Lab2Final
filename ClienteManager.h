@@ -15,8 +15,12 @@ class ClienteManager
         int Buscar(std::string dni);
         void ListarxDNI();
 
+        void HacerCopiaSeguridad();
+        void RestaurarCopiaSeguridad();
+
     private:
         ClienteArchivo _archivo = ClienteArchivo("clientes.dat");
+        ClienteArchivo _archivoBkp = ClienteArchivo("clientes.bkp");
         int generarIdCliente();
 };
 

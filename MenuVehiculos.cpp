@@ -20,6 +20,8 @@ void MenuVehiculos::Mostrar(){
         cout << "8 - LISTAR VEHICULOS POR GAMA" << endl;
         cout << "9 - LISTAR VEHICULOS POR MARCA" << endl;
         cout << "10 - LISTAR VEHICULOS POR AÑO DE PRODUCCION" << endl;
+        cout << "90 - REALIZAR BACKUP DE ARCHIVO" << endl;
+        cout << "99 - RESTAURAR BACKUP DE ARCHIVO" << endl;
         cout << "0 - VOLVER AL MENU PRINCIPAL" <<endl;
         cout << endl <<"INGRESE UNA OPCION: ";
         cin >> opc;
@@ -55,6 +57,12 @@ void MenuVehiculos::Mostrar(){
             break;
         case 10:
             _manager.ListarxAnioProduccion();
+            break;
+        case 90:
+            _manager.HacerCopiaSeguridad();
+            break;
+        case 99:
+            _manager.RestaurarCopiaDeSeguridad();
             break;
         case 0:
             return ;

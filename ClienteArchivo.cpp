@@ -25,6 +25,18 @@ bool ClienteArchivo::Guardar(Cliente reg, int nroRegistro){
     fclose(p);
     return pudoEscribir;
 }
+
+bool ClienteArchivo::Guardar(Cliente* clientes, int cantidadRegistros){
+    FILE *p = fopen(_nombreArchivo.c_str(), "ab");
+    if(p == nullptr){
+        return false;
+    }
+
+    int cantidadRegistrosEscritos = fwrite(clientes, sizeof(Cliente), cantidadRegistros, p);
+    fclose(p);
+    return cantidadRegistrosEscritos == cantidadRegistros;
+}
+
 int ClienteArchivo::contarRegistros(){
     FILE *p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr){
@@ -46,6 +58,16 @@ Cliente ClienteArchivo::Leer(int nroRegistro){
     fclose(p);
     return reg;
 }
+
+void ClienteArchivo::Leer(Cliente* clientes, int cantidadRegistros){
+    FILE *p = fopen(_nombreArchivo.c_str(), "rb");
+    if(p == nullptr){
+        return;
+    }
+    fread(clientes, sizeof(Cliente), cantidadRegistros, p);
+    fclose(p);
+}
+
 int ClienteArchivo::Buscar(std::string dniCliente){
     FILE *p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr){
@@ -62,4 +84,12 @@ int ClienteArchivo::Buscar(std::string dniCliente){
     }
     fclose(p);
     return -1;
+}
+
+void ClienteArchivo::Vaciar(){
+    FILE *p = fopen(_nombreArchivo.c_str(), "wb");
+    if(p == nullptr){
+        return;
+    }
+    fclose(p);
 }

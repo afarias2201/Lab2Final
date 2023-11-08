@@ -27,6 +27,16 @@ bool ReservaArchivo::Guardar(Reserva reg, int nroRegistro){
     return pudoEscribir;
 }
 
+bool ReservaArchivo::Guardar(Reserva* reservas, int cantidadRegistros){
+    FILE *p = fopen(_nombreArchivo.c_str(), "ab");
+    if(p == nullptr){
+        return false;
+    }
+    int cantidadRegistrosEscritos = fwrite(reservas, sizeof(Reserva), cantidadRegistros, p);
+    fclose(p);
+    return cantidadRegistrosEscritos == cantidadRegistros;
+}
+
 int ReservaArchivo::contarRegistros(){
     FILE *p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr){
@@ -50,6 +60,15 @@ Reserva ReservaArchivo::Leer(int nroRegistro){
     return reg;
 }
 
+void ReservaArchivo::Leer(Reserva* reservas, int cantidadRegistros){
+    FILE *p = fopen(_nombreArchivo.c_str(), "rb");
+    if(p == nullptr){
+        return;
+    }
+    fread(reservas, sizeof(Reserva), cantidadRegistros, p);
+    fclose(p);
+}
+
 int ReservaArchivo::Buscar(int idReserva){
     FILE *p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr){
@@ -66,4 +85,12 @@ int ReservaArchivo::Buscar(int idReserva){
     }
     fclose(p);
     return -1;
+}
+
+void ReservaArchivo::Vaciar(){
+    FILE *p = fopen(_nombreArchivo.c_str(), "wb");
+    if(p == nullptr){
+        return;
+    }
+    fclose(p);
 }

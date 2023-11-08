@@ -529,3 +529,42 @@ void ReservaManager::listarVehiculos(){
     }
     cout << endl;
 }
+
+void ReservaManager::HacerCopiaSeguridad(){
+    int cantidadRegistros = _archivo.contarRegistros();
+    Reserva *reservas = new Reserva[cantidadRegistros];
+    if(reservas == nullptr){
+        cout << "Falla al realizar backup." << endl;
+        return;
+    }
+
+    _archivo.Leer(reservas, cantidadRegistros);
+    _archivoBkp.Vaciar();
+
+    if(_archivoBkp.Guardar(reservas, cantidadRegistros)){
+        cout << "Backup realizado correctamente." << endl;
+    }
+    else{
+        cout << "Error al realizar el backup." << endl;
+    }
+    delete[] reservas;
+}
+
+void ReservaManager::RestaurarCopiaSeguridad(){
+    int cantidadRegistros = _archivoBkp.contarRegistros();
+    Reserva *reservas = new Reserva[cantidadRegistros];
+    if(reservas == nullptr){
+        cout << "Falla al restaurar backup." << endl;
+    }
+
+    _archivoBkp.Leer(reservas, cantidadRegistros);
+    _archivo.Vaciar();
+
+    if(_archivo.Guardar(reservas, cantidadRegistros)){
+        cout << "Backup restaurado satisfactoriamente." << endl;
+    }
+    else{
+        cout << "Falla al restuarar backup." << endl;
+    }
+    delete[] reservas;
+}

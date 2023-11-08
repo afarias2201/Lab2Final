@@ -354,3 +354,45 @@ void VehiculoManager::ListarxAnioProduccion(){
         cout << endl << "No existen registros con los parametos ingresados." << endl;
     }
 }
+
+void VehiculoManager::HacerCopiaSeguridad(){
+    int cantidadRegistros = _archivo.contarRegistros();
+    Vehiculo *vehiculos = new Vehiculo[cantidadRegistros];
+
+    if(vehiculos == nullptr){
+        cout << "Falla al realizar el backup." << endl;
+        return;
+    }
+
+    _archivo.Leer(vehiculos, cantidadRegistros);
+    _archivoBkp.Vaciar();
+    if(_archivoBkp.Guardar(vehiculos, cantidadRegistros)){
+        cout << "Backup realizado correctamente." << endl;
+    }
+    else{
+        cout << "Falla al realizar backup." << endl;
+    }
+    delete []vehiculos;
+}
+
+void VehiculoManager::RestaurarCopiaDeSeguridad(){
+    int cantidadRegistros = _archivoBkp.contarRegistros();
+    Vehiculo *vehiculos = new Vehiculo[cantidadRegistros];
+
+    if(vehiculos == nullptr){
+        cout << "Falla al restaurar backup." << endl;
+        return;
+    }
+
+    _archivoBkp.Leer(vehiculos, cantidadRegistros);
+    _archivo.Vaciar();
+
+    if(_archivo.Guardar(vehiculos, cantidadRegistros)){
+        cout << "Backup restaurado satisfactoriamente." << endl;
+    }
+    else{
+        cout << "Falla al restaurar backup." << endl;
+    }
+
+    delete[] vehiculos;
+}

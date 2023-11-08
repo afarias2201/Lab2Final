@@ -19,6 +19,9 @@ class VehiculoManager
         int contarVehiculosActivos();
         void cargarVectorVehiculosActivos(Vehiculo* vec, int cantidadElementos);
 
+        void HacerCopiaSeguridad();
+        void RestaurarCopiaDeSeguridad();
+
         //consultar
         void ListarxPatente();
         void ListarxGamaVehiculo();
@@ -29,6 +32,7 @@ class VehiculoManager
 
     private:
         VehiculoArchivo _archivo = VehiculoArchivo("vehiculo.dat");
+        VehiculoArchivo _archivoBkp = VehiculoArchivo("vehiculo.bkp");
 };
 
 #endif // VEHICULOMANAGER_H

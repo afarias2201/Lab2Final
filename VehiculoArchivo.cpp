@@ -29,6 +29,17 @@ bool VehiculoArchivo::Guardar(Vehiculo reg, int nroRegistro){
     return pudoEscribir;
 }
 
+bool VehiculoArchivo::Guardar(Vehiculo* vRegistros, int cantidadRegistros){
+    FILE *p = fopen(_nombreArchivo.c_str(), "ab");
+    if( p == nullptr){
+        return false;
+    }
+
+    int cantidadRegistrosEscritos = fwrite(vRegistros, sizeof(Vehiculo), cantidadRegistros, p);
+    fclose(p);
+    return cantidadRegistrosEscritos == cantidadRegistros;
+}
+
 int VehiculoArchivo::contarRegistros(){
     FILE *p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr){
@@ -52,6 +63,17 @@ Vehiculo VehiculoArchivo::Leer(int nroRegistro){
     return reg;
 }
 
+void VehiculoArchivo::Leer(Vehiculo* vRegistros, int cantidadRegistros){
+	FILE *p = fopen(_nombreArchivo.c_str(), "rb");
+	if (p == NULL)
+	{
+		return ;
+	}
+
+	fread(vRegistros, sizeof(Vehiculo), cantidadRegistros, p);
+	fclose(p);
+}
+
 int VehiculoArchivo::Buscar(std::string nroPatente){
     FILE *p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr){
@@ -68,4 +90,13 @@ int VehiculoArchivo::Buscar(std::string nroPatente){
     }
     fclose(p);
     return -1;
+}
+
+void VehiculoArchivo::Vaciar(){
+	FILE *p = fopen(_nombreArchivo.c_str(), "wb");
+	if (p == NULL)
+	{
+		return;
+	}
+	fclose(p);
 }

@@ -10,9 +10,12 @@ class ReservaArchivo
         ReservaArchivo(std::string nombreArchivo);
         bool Guardar(Reserva reg);
         bool Guardar(Reserva reg, int nroRegistro);
+        bool Guardar(Reserva* reservas, int cantidadRegistros);
         int contarRegistros();
         Reserva Leer(int nroRegistro);
+        void Leer(Reserva* reservas, int cantidadRegistros);
         int Buscar(int idReserva);
+        void Vaciar();
 
     private:
         std::string _nombreArchivo;

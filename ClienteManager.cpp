@@ -167,3 +167,42 @@ void ClienteManager::ListarxDNI(){
 int ClienteManager::generarIdCliente(){
     return _archivo.contarRegistros() + 1;
 }
+
+void ClienteManager::HacerCopiaSeguridad(){
+    int cantidadRegistros = _archivo.contarRegistros();
+    Cliente *clientes = new Cliente[cantidadRegistros];
+    if(clientes == nullptr){
+        cout << "Falla al crear el backup." << endl;
+        return;
+    }
+
+    _archivo.Leer(clientes, cantidadRegistros);
+    _archivoBkp.Vaciar();
+
+    if(_archivoBkp.Guardar(clientes, cantidadRegistros)){
+        cout << "Backup creado satisfactoriamente." << endl;
+    }
+    else{
+        cout << "Falla al crear backup." << endl;
+    }
+    delete[] clientes;
+}
+void ClienteManager::RestaurarCopiaSeguridad(){
+    int cantidadRegistros = _archivoBkp.contarRegistros();
+    Cliente* clientes = new Cliente[cantidadRegistros];
+    if(clientes == nullptr){
+        cout << "Falla al realizar backup." << endl;
+        return;
+    }
+
+    _archivoBkp.Leer(clientes, cantidadRegistros);
+    _archivo.Vaciar();
+
+    if(_archivo.Guardar(clientes, cantidadRegistros)){
+        cout << "Backup restaurado correctamente." << endl;
+    }
+    else{
+        cout << "Falla al restaurar backup." << endl;
+    }
+    delete[] clientes;
+}
