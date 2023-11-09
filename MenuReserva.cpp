@@ -19,8 +19,6 @@ void MenuReserva::Mostrar(){
         std::cout << "7 - BUSCAR RESERVAS POR FECHA DE INICIO" << endl;
         std::cout << "8 - RECAUDACION POR GAMA" << endl;
         std::cout << "9 - RECAUDACION ANUAL" << endl;
-        std::cout << "90 - REALIZAR BACKUP DE ARCHIVO" << endl;
-        std::cout << "99 - RESTAURAR BACKUP DE ARCHIVO" << endl;
         std::cout << "0 - VOLVER AL MENU PRINCIPAL" <<endl;
         std::cout << endl <<"INGRESE UNA OPCION: ";
         std::cin >> opc;
@@ -54,12 +52,6 @@ void MenuReserva::Mostrar(){
             break;
         case 9:
             _manager.recaudacionAnual();
-            break;
-        case 90:
-            _manager.HacerCopiaSeguridad();
-            break;
-        case 99:
-            _manager.RestaurarCopiaSeguridad();
             break;
         case 0:
             return;

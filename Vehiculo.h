@@ -16,6 +16,7 @@ class Vehiculo
         int getAnioDeProduccion() const;
         bool getEnTaller() const;
         bool getEstado() const;
+        std::string getTipoString() const;
 
         void setPatente(std::string patente);
         void setModelo(std::string modelo);

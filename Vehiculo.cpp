@@ -30,6 +30,18 @@ int Vehiculo::getTipo() const{
     return _tipo;
 }
 
+std::string Vehiculo::getTipoString() const{
+    if(_tipo == 1){
+        return "Gama Baja";
+    }
+    if(_tipo == 2){
+        return "Gama Media";
+    }
+    if(_tipo == 3){
+        return "Gama Alta";
+    }
+}
+
 int Vehiculo::getAnioDeProduccion() const{
     return _anioDeProduccion;
 }

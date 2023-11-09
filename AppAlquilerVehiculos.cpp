@@ -8,12 +8,13 @@ void AppAlquilerVehiculos::Ejecutar(){
     {
         system("cls");
         cout << "-------------------------------------------" << endl;
-        cout << "SISTEMA DE GESTION DE ALQUILER DE VEHICULOS" << endl;
+        cout << "SISTEMA DE GESTION DE ALQUILER DE VEHÍCULOS" << endl;
         cout << "-------------------------------------------" << endl;
         cout << "1 - RESERVAS" << endl;
-        cout << "2 - VEHICULOS" << endl;
+        cout << "2 - VEHÍCULOS" << endl;
         cout << "3 - CLIENTES" << endl;
-        cout << "4 - DISPONIBILIDAD DE VEHICULOS" << endl;
+        cout << "4 - DISPONIBILIDAD DE VEHÍCULOS" << endl;
+        cout << "5 - COPIAS DE SEGURIDAD Y RESTAURACIÓN DE DATOS" << endl;
         cout << "0 - CERRAR PROGRAMA" <<endl;
         cout << endl <<"INGRESE UNA OPCION: ";
         cin >> opc;
@@ -31,6 +32,9 @@ void AppAlquilerVehiculos::Ejecutar(){
             break;
         case 4:
             _dispoFlota.generarDisponibilidad();
+            break;
+        case 5:
+            _menuCopiaRestauracion.Mostrar();
             break;
         case 0:
             return ;

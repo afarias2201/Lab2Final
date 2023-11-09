@@ -294,7 +294,7 @@ bool ReservaManager::validarDisponibilidadVehiculoExtension(Fecha fInicio, Fecha
 {
     for(int i=0; i<cantidadElementos; i++)
     {
-        if((nuevaFechaFin > vec[i].getFechaInicio() && nuevaFechaFin < vec[i].getFechaFin()) || (fInicio < vec[i].getFechaInicio() && nuevaFechaFin < vec[i].getFechaFin()))
+        if(nuevaFechaFin > vec[i].getFechaInicio() && nuevaFechaFin < vec[i].getFechaFin() || fInicio < vec[i].getFechaInicio() && nuevaFechaFin > vec[i].getFechaFin())
         {
             return false;
         }
@@ -521,11 +521,18 @@ void ReservaManager::ordenarReservasPorFecha(Reserva* reservas, int cantidadElem
 
 void ReservaManager::listarVehiculos(){
     int cantidadRegistros = _archivoVehiculo.contarRegistros();
-
-    cout << endl;
+        cout << endl << "VEHÍCULOS" << endl;
+        cout << left << setw(10) << "PATENTE";
+        cout << left << setw(15) << "MODELO";
+        cout << left << setw(15) << "MARCA";
+        cout << left << setw(15) << "GAMA";
+        cout << endl << endl;
     for(int i=0; i<cantidadRegistros; i++){
         Vehiculo vehiculo = _archivoVehiculo.Leer(i);
-        cout << vehiculo.getPatente() << "\t" << vehiculo.getModelo() << "\t" << vehiculo.getMarca() << "\t" << vehiculo.getTipo() << endl;
+        cout << left << setw(10) << vehiculo.getPatente();
+        cout << left << setw(15) << vehiculo.getModelo();
+        cout << left << setw(15) << vehiculo.getMarca();
+        cout << left << setw(15) << vehiculo.getTipoString() << endl;
     }
     cout << endl;
 }

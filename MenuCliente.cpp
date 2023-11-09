@@ -15,8 +15,6 @@ void MenuCliente::Mostrar(){
         cout << "3 - ELIMINAR" << endl;
         cout << "4 - LISTADO DE CLIENTES" << endl;
         cout << "5 - BUSCAR POR DNI" << endl;
-        cout << "90 - CREAR BACKUP DE ARCHIVO" << endl;
-        cout << "99 - RESTAURAR BACKUP DE ARCHIVO" << endl;
         cout << "0 - VOLVER AL MENU PRINCIPAL" <<endl;
         cout << endl <<"INGRESE UNA OPCION: ";
         cin >> opc;
@@ -37,12 +35,6 @@ void MenuCliente::Mostrar(){
             break;
         case 5:
             _manager.ListarxDNI();
-            break;
-        case 90:
-            _manager.HacerCopiaSeguridad();
-            break;
-        case 99:
-            _manager.RestaurarCopiaSeguridad();
             break;
         case 0:
             return ;

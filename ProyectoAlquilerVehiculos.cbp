@@ -48,6 +48,8 @@
 		<Unit filename="Fecha.h" />
 		<Unit filename="MenuCliente.cpp" />
 		<Unit filename="MenuCliente.h" />
+		<Unit filename="MenuCopiaYRestauracionDatos.cpp" />
+		<Unit filename="MenuCopiaYRestauracionDatos.h" />
 		<Unit filename="MenuEditarCliente.cpp" />
 		<Unit filename="MenuEditarCliente.h" />
 		<Unit filename="MenuEditarVehiculo.cpp" />
