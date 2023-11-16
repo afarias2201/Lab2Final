@@ -396,3 +396,49 @@ void VehiculoManager::RestaurarCopiaDeSeguridad(){
 
     delete[] vehiculos;
 }
+
+void VehiculoManager::OrdenarxGama(){
+    int cantidadRegistros = _archivo.contarRegistros();
+    for(int i=1; i<=3; i++){
+        for(int x=0; x<cantidadRegistros; x++){
+            Vehiculo vehiculo = _archivo.Leer(x);
+            if(vehiculo.getTipo() == i && vehiculo.getEstado()){
+                Mostrar(vehiculo);
+            }
+        }
+    }
+    cout << endl;
+}
+
+void VehiculoManager::OrdenarxAnioProduccion(){
+    int cantidadVehiculos = contarVehiculosActivos();
+    Vehiculo* vehiculos;
+    vehiculos = new Vehiculo[cantidadVehiculos];
+    if(vehiculos == nullptr){
+        cout << "Error de memoria." << endl;
+        return;
+    }
+
+    cargarVectorVehiculosActivos(vehiculos, cantidadVehiculos);
+    ordenarVectorVehiculosxAnio(vehiculos, cantidadVehiculos);
+
+    for(int i=0; i<cantidadVehiculos; i++){
+        if(vehiculos[i].getEstado()){
+            Mostrar(vehiculos[i]);
+        }
+    }
+    cout << endl;
+    delete[] vehiculos;
+}
+
+void VehiculoManager::ordenarVectorVehiculosxAnio(Vehiculo* vehiculos, int cantidadElementos){
+    for(int i=0; i<cantidadElementos; i++){
+        for(int x=0; x<cantidadElementos - 1; x++){
+            if(vehiculos[x].getAnioDeProduccion() > vehiculos[x+1].getAnioDeProduccion()){
+                Vehiculo aux = vehiculos[x];
+                vehiculos[x] = vehiculos[x+1];
+                vehiculos[x+1] = aux;
+            }
+        }
+    }
+}

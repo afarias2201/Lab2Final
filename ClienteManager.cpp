@@ -168,6 +168,47 @@ int ClienteManager::generarIdCliente(){
     return _archivo.contarRegistros() + 1;
 }
 
+void ClienteManager::ClientesOrdenadoAlfabeticamente(){
+    int cantidadRegistros = _archivo.contarRegistros();
+
+    Cliente* clientes;
+    clientes = new Cliente[cantidadRegistros];
+    if(clientes == nullptr){
+        cout << "Error de memoria." << endl;
+        return;
+    }
+
+    cargarVectorClientes(clientes, cantidadRegistros);
+    OrdenarVectorClientesAlfabeticamente(clientes, cantidadRegistros);
+
+    for(int i=0; i<cantidadRegistros; i++){
+        if(clientes[i].getEstado()){
+            Mostrar(clientes[i]);
+        }
+    }
+    cout << endl;
+    delete[] clientes;
+}
+
+void ClienteManager::cargarVectorClientes(Cliente* clientes, int cantidadRegistros){
+    for(int i=0; i<cantidadRegistros; i++){
+        Cliente reg = _archivo.Leer(i);
+        clientes[i] = reg;
+    }
+}
+
+void ClienteManager::OrdenarVectorClientesAlfabeticamente(Cliente* clientes, int cantidadRegistros){
+    for(int i=0; i<cantidadRegistros; i++){
+        for(int x=0; x<cantidadRegistros - 1; x++){
+            if(clientes[x].getApellidos() > clientes[x+1].getApellidos()){
+                Cliente aux = clientes[x];
+                clientes[x] = clientes[x+1];
+                clientes[x+1] = aux;
+            }
+        }
+    }
+}
+
 void ClienteManager::HacerCopiaSeguridad(){
     int cantidadRegistros = _archivo.contarRegistros();
     Cliente *clientes = new Cliente[cantidadRegistros];

@@ -507,10 +507,66 @@ void ReservaManager::extenderReserva()
     delete[] ReservasMismaPatente;
 }
 
+void ReservaManager::ReservasOrdenadasxFechaInicio(){
+    int cantidadRegistros = _archivo.contarRegistros();
+    Reserva* reservas;
+    reservas = new Reserva[cantidadRegistros];
+    if(reservas == nullptr){
+        cout << "Error memoria." << endl;
+        return;
+    }
+
+    _archivo.Leer(reservas, cantidadRegistros);
+    ordenarReservasPorFecha(reservas, cantidadRegistros);
+
+    for(int i=0; i<cantidadRegistros; i++){
+        if(reservas[i].getEstado()){
+            Mostrar(reservas[i]);
+        }
+    }
+    cout << endl;
+    delete[] reservas;
+}
+
 void ReservaManager::ordenarReservasPorFecha(Reserva* reservas, int cantidadElementos){
+    mostrarTituloReservas();
     for(int i=0; i<cantidadElementos; i++){
-        for(int x=0; i<cantidadElementos - 1; i++){
-            if(reservas[x=1].getFechaInicio() > reservas[x=1].getFechaInicio()){
+        for(int x=0; x<cantidadElementos - 1; x++){
+            if(reservas[x].getFechaInicio() > reservas[x+1].getFechaInicio()){
+                Reserva aux = reservas[x];
+                reservas[x] = reservas[x+1];
+                reservas[x+1] = aux;
+            }
+        }
+    }
+}
+
+void ReservaManager::ReservasOrdenadasxImporte(){
+    int cantidadRegistros = _archivo.contarRegistros();
+    Reserva* reservas;
+    reservas = new Reserva[cantidadRegistros];
+    if(reservas == nullptr){
+        cout << "Error memoria." << endl;
+        return;
+    }
+
+    _archivo.Leer(reservas, cantidadRegistros);
+    ordenarReservasPorImporte(reservas, cantidadRegistros);
+
+    for(int i=0; i<cantidadRegistros; i++){
+        if(reservas[i].getEstado()){
+            Mostrar(reservas[i]);
+        }
+    }
+
+    cout << endl;
+    delete[] reservas;
+}
+
+void ReservaManager::ordenarReservasPorImporte(Reserva* reservas, int cantidadElentos){
+    for(int i=0; i<cantidadElentos; i++){
+        for(int x=0; x<cantidadElentos - 1; x++){
+            if(reservas[x].getImporteAlquiler() > reservas[x+1].getImporteAlquiler()){
                 Reserva aux = reservas[x];
                 reservas[x] = reservas[x+1];
                 reservas[x+1] = aux;

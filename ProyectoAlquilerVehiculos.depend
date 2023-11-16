@@ -147,7 +147,7 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menuvehiculos.h
 	"VehiculoManager.h"
 
-1699400736 c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.h
+1700004175 c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.h
 	"Vehiculo.h"
 	"VehiculoArchivo.h"
 	<string>
@@ -162,7 +162,7 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menureserva.h
 	"ReservaManager.h"
 
-1699402817 c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.h
+1700008494 c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.h
 	"Reserva.h"
 	"ReservaArchivo.h"
 	"VehiculoArchivo.h"
@@ -184,7 +184,7 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menucliente.h
 	"ClienteManager.h"
 
-1699404412 c:\users\steam\onedrive\escritorio\git\lab2final\clientemanager.h
+1700005863 c:\users\steam\onedrive\escritorio\git\lab2final\clientemanager.h
 	"Cliente.h"
 	"ClienteArchivo.h"
 	"string"
@@ -204,7 +204,7 @@
 	"ClienteArchivo.h"
 	<iostream>
 
-1699404731 source:c:\users\steam\onedrive\escritorio\git\lab2final\clientemanager.cpp
+1700006204 source:c:\users\steam\onedrive\escritorio\git\lab2final\clientemanager.cpp
 	"ClienteManager.h"
 	<iostream>
 	"MenuEditarCliente.h"
@@ -223,7 +223,7 @@
 	"ClienteManager.h"
 	<locale.h>
 
-1699489995 source:c:\users\steam\onedrive\escritorio\git\lab2final\menucliente.cpp
+1700006260 source:c:\users\steam\onedrive\escritorio\git\lab2final\menucliente.cpp
 	"MenuCliente.h"
 	<iostream>
 
@@ -238,11 +238,11 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menueditarvehiculo.h
 	"Vehiculo.h"
 
-1699489995 source:c:\users\steam\onedrive\escritorio\git\lab2final\menureserva.cpp
+1700008554 source:c:\users\steam\onedrive\escritorio\git\lab2final\menureserva.cpp
 	"MenuReserva.h"
 	<iostream>
 
-1699489995 source:c:\users\steam\onedrive\escritorio\git\lab2final\menuvehiculos.cpp
+1700004742 source:c:\users\steam\onedrive\escritorio\git\lab2final\menuvehiculos.cpp
 	"MenuVehiculos.h"
 	<iostream>
 
@@ -263,13 +263,13 @@
 	<cstdio>
 	<cstring>
 
-1699400736 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.cpp
+1700007905 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.cpp
 	"VehiculoManager.h"
 	<iostream>
 	<algorithm>
 	"MenuEditarVehiculo.h"
 
-1699488985 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.cpp
+1700008519 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.cpp
 	"ReservaManager.h"
 	"Vehiculo.h"
 	<iostream>
@@ -296,7 +296,7 @@
 	"ReservaManager.h"
 	"VehiculoManager.h"
 
-1699489841 source:c:\users\steam\onedrive\escritorio\git\lab2final\menucopiayrestauraciondatos.cpp
+1699575905 source:c:\users\steam\onedrive\escritorio\git\lab2final\menucopiayrestauraciondatos.cpp
 	"MenuCopiaYRestauracionDatos.h"
 	"MenuCliente.h"
 	<iostream>

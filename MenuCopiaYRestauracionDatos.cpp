@@ -54,6 +54,9 @@ void MenuCopiaYRestauracionDatos::Mostrar(){
             _reservaManager.RestaurarCopiaSeguridad();
             _vehiculoManager.RestaurarCopiaDeSeguridad();
             break;
+        case 0:
+            return;
+            break;
         default:
             cout << "Opcion ingresada es incorrecta." << endl << "Intente nuevamente." << endl;
             break;

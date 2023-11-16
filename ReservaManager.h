@@ -30,6 +30,10 @@ class ReservaManager
         void ListarxRangoDeImporte();
         void ListarxFechaDeInicioReserva();
 
+        //Listados
+        void ReservasOrdenadasxFechaInicio();
+        void ReservasOrdenadasxImporte();
+
         //Reportes
         void recaudacionxGama();
         void recaudacionAnual();
@@ -44,6 +48,8 @@ class ReservaManager
         int generarReservaId();
         void mostrarTituloReservas();
         void ordenarReservasPorFecha(Reserva* reservas, int cantidadElementos);
+        void ordenarReservasPorImporte(Reserva* reservas, int cantidadElentos);
+
         void listarVehiculos();
 };
 

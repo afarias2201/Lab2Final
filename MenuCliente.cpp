@@ -15,6 +15,7 @@ void MenuCliente::Mostrar(){
         cout << "3 - ELIMINAR" << endl;
         cout << "4 - LISTADO DE CLIENTES" << endl;
         cout << "5 - BUSCAR POR DNI" << endl;
+        cout << "6 - LISTAR ALFABÉTICAMENTE" << endl;
         cout << "0 - VOLVER AL MENU PRINCIPAL" <<endl;
         cout << endl <<"INGRESE UNA OPCION: ";
         cin >> opc;
@@ -35,6 +36,9 @@ void MenuCliente::Mostrar(){
             break;
         case 5:
             _manager.ListarxDNI();
+            break;
+        case 6:
+            _manager.ClientesOrdenadoAlfabeticamente();
             break;
         case 0:
             return ;

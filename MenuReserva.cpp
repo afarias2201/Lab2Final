@@ -19,6 +19,8 @@ void MenuReserva::Mostrar(){
         std::cout << "7 - BUSCAR RESERVAS POR FECHA DE INICIO" << endl;
         std::cout << "8 - RECAUDACION POR GAMA" << endl;
         std::cout << "9 - RECAUDACION ANUAL" << endl;
+        std::cout << "10 - LISTAR RESERVAS POR FECHA DE INICIO" << endl;
+        std::cout << "11 - LISTAR RESERVAS POR IMPORTE" << endl;
         std::cout << "0 - VOLVER AL MENU PRINCIPAL" <<endl;
         std::cout << endl <<"INGRESE UNA OPCION: ";
         std::cin >> opc;
@@ -52,6 +54,12 @@ void MenuReserva::Mostrar(){
             break;
         case 9:
             _manager.recaudacionAnual();
+            break;
+        case 10:
+            _manager.ReservasOrdenadasxFechaInicio();
+            break;
+        case 11:
+            _manager.ReservasOrdenadasxImporte();
             break;
         case 0:
             return;

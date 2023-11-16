@@ -18,9 +18,14 @@ class ClienteManager
         void HacerCopiaSeguridad();
         void RestaurarCopiaSeguridad();
 
+        //Listado
+        void ClientesOrdenadoAlfabeticamente();
+
     private:
         ClienteArchivo _archivo = ClienteArchivo("clientes.dat");
         ClienteArchivo _archivoBkp = ClienteArchivo("clientes.bkp");
+        void cargarVectorClientes(Cliente* clientes, int cantidadRegistros);
+        void OrdenarVectorClientesAlfabeticamente(Cliente* clientes, int cantidadRegistros);
         int generarIdCliente();
 };
 

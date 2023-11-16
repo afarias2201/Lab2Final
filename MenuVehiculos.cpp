@@ -20,6 +20,8 @@ void MenuVehiculos::Mostrar(){
         cout << "8 - LISTAR VEHICULOS POR GAMA" << endl;
         cout << "9 - LISTAR VEHICULOS POR MARCA" << endl;
         cout << "10 - LISTAR VEHICULOS POR AÑO DE PRODUCCION" << endl;
+        cout << "11 - LISTAR VEHICULOS ORDENADOS POR GAMA" << endl;
+        cout << "12 - LISTAR VEHICULOS ORDENADOS POR AÑO DE PRODUCCIÓN" << endl;
         cout << "0 - VOLVER AL MENU PRINCIPAL" <<endl;
         cout << endl <<"INGRESE UNA OPCION: ";
         cin >> opc;
@@ -55,6 +57,12 @@ void MenuVehiculos::Mostrar(){
             break;
         case 10:
             _manager.ListarxAnioProduccion();
+            break;
+        case 11:
+            _manager.OrdenarxGama();
+            break;
+        case 12:
+            _manager.OrdenarxAnioProduccion();
             break;
         case 0:
             return ;

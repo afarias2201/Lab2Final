@@ -22,17 +22,22 @@ class VehiculoManager
         void HacerCopiaSeguridad();
         void RestaurarCopiaDeSeguridad();
 
-        //consultar
+        //Consultar
         void ListarxPatente();
         void ListarxGamaVehiculo();
         void ListarxMarca();
         void ListarxAnioProduccion();
+
+        //Listar
+        void OrdenarxGama();
+        void OrdenarxAnioProduccion();
 
         //Reporte
 
     private:
         VehiculoArchivo _archivo = VehiculoArchivo("vehiculo.dat");
         VehiculoArchivo _archivoBkp = VehiculoArchivo("vehiculo.bkp");
+        void ordenarVectorVehiculosxAnio(Vehiculo *vehiculos, int cantidadElementos);
 };
 
 #endif // VEHICULOMANAGER_H
