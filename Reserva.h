@@ -26,7 +26,7 @@ class Reserva
 
     private:
         int _idReserva;
-        char _numeroDocCliente[8];
+        char _numeroDocCliente[10];
         char _patenteVehiculo[10];
         float _importeAlquiler;
         Fecha _fechaInicio;

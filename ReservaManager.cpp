@@ -20,7 +20,7 @@ void ReservaManager::Cargar()
     cout << "-------------------------------------------" << endl;
 
     id = generarReservaId();
-    cout << "ID a generar: " << id << endl;
+    cout << "ID a generar: " << id << endl << endl;
 
     managerVehiculo.ListarTodos();
     cout << endl;
@@ -294,7 +294,11 @@ bool ReservaManager::validarDisponibilidadVehiculo(Fecha fInicio, Fecha fFin, Re
 {
     for(int i=0; i<cantidadElementos; i++)
     {
-        if(fInicio > vec[i].getFechaInicio() && fInicio < vec[i].getFechaFin() || fFin > vec[i].getFechaInicio() && fFin < vec[i].getFechaFin() || fInicio < vec[i].getFechaInicio() && fFin > vec[i].getFechaFin() || fInicio == vec[i].getFechaInicio() && fFin == vec[i].getFechaFin())
+        if(fInicio > vec[i].getFechaInicio() && fInicio < vec[i].getFechaFin()
+           || fFin > vec[i].getFechaInicio() && fFin < vec[i].getFechaFin()
+           || fInicio < vec[i].getFechaInicio() && fFin > vec[i].getFechaFin()
+           || fInicio == vec[i].getFechaInicio() && fFin == vec[i].getFechaFin()
+           || fFin == vec[i].getFechaInicio() || fInicio == vec[i].getFechaFin())
         {
             return false;
         }
@@ -677,9 +681,7 @@ bool ReservaManager::validarSiEstaDisponibleHoy(Fecha fechaHoy, Reserva* reserva
     bool disponible = true;
     for(int i=0; i<cantidadElementos; i++)
     {
-        Fecha aux = Fecha(reserva[i].getFechaInicio().getDia(), reserva[i].getFechaInicio().getMes(), reserva[i].getFechaInicio().getAnio());
-        Fecha aux2 = Fecha(reserva[i].getFechaFin().getDia(), reserva[i].getFechaFin().getMes(), reserva[i].getFechaFin().getAnio());
-        if(fechaHoy > reserva[i].getFechaInicio() && fechaHoy < reserva[i].getFechaFin())
+        if(fechaHoy > reserva[i].getFechaInicio() && fechaHoy < reserva[i].getFechaFin() || fechaHoy == reserva[i].getFechaInicio() || fechaHoy == reserva[i].getFechaFin())
         {
             return false;
         }

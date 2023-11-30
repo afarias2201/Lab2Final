@@ -179,7 +179,7 @@
 	"VehiculoManager.h"
 	<string>
 
-1699144859 c:\users\steam\onedrive\escritorio\git\lab2final\reserva.h
+1701381927 c:\users\steam\onedrive\escritorio\git\lab2final\reserva.h
 	<string>
 	"Fecha.h"
 
@@ -277,7 +277,7 @@
 	<cstdio>
 	<cstring>
 
-1701313112 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.cpp
+1701313235 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.cpp
 	"VehiculoManager.h"
 	"ReservaManager.h"
 	<algorithm>
@@ -287,7 +287,7 @@
 	<iomanip>
 	"rlutil.h"
 
-1701304935 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.cpp
+1701382874 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.cpp
 	"ReservaManager.h"
 	"Vehiculo.h"
 	<algorithm>
