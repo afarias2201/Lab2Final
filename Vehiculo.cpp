@@ -1,10 +1,10 @@
 #include "Vehiculo.h"
 #include <cstring>
 
-Vehiculo::Vehiculo(std::string patente, std::string modelo, std::string marca, int tipo, int anio, bool enTaller, bool estado){
+Vehiculo::Vehiculo(std::string patente, std::string modelo, int marca, int tipo, int anio, bool enTaller, bool estado){
     strcpy(_patente, patente.c_str());
     strcpy(_modelo, modelo.c_str());
-    strcpy(_marca, marca.c_str());
+    _idMarca = marca;
     _tipo = tipo;
     _anioDeProduccion = anio;
     _enTaller = enTaller;
@@ -23,8 +23,8 @@ std::string Vehiculo::getModelo()const{
     return _modelo;
 }
 
-std::string Vehiculo::getMarca() const{
-    return _marca;
+int Vehiculo::getIDMarca() const{
+    return _idMarca;
 }
 int Vehiculo::getTipo() const{
     return _tipo;
@@ -45,7 +45,9 @@ std::string Vehiculo::getTipoString() const{
 int Vehiculo::getAnioDeProduccion() const{
     return _anioDeProduccion;
 }
-
+float Vehiculo::getTarifaDiaria() const{
+    return _tarifaDiaria;
+}
 bool Vehiculo::getEnTaller() const{
     return _enTaller;
 }
@@ -59,14 +61,17 @@ void Vehiculo::setPatente(std::string patente){
 void Vehiculo::setModelo(std::string modelo){
     strcpy(_modelo, modelo.c_str());
 }
-void Vehiculo::setMarca(std::string marca){
-    strcpy(_marca, marca.c_str());
+void Vehiculo::setIdMarca(int marca){
+    _idMarca = marca;
 }
 void Vehiculo::setTipo(int tipo){
     _tipo = tipo;
 }
 void Vehiculo::setAnioProduccion(int anio){
     _anioDeProduccion = anio;
+}
+void Vehiculo::setTarifaDiaria(float tarifa){
+    _tarifaDiaria = tarifa;
 }
 void Vehiculo::setEnTaller(bool enTaller){
     _enTaller = enTaller;

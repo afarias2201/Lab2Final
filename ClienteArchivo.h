@@ -1,8 +1,6 @@
 #ifndef CLIENTEARCHIVO_
 #define CLIENTEARCHIVO_
 #include "Cliente.h"
-#include <iostream>
-
 
 class ClienteArchivo
 {

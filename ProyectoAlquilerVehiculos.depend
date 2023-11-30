@@ -133,26 +133,35 @@
 1697674645 c:\users\steam\onedrive\escritorio\unt lab2\proyectoalquilervehiculos\menueditarcliente.h
 	"Cliente.h"
 
-1699489764 source:c:\users\steam\onedrive\escritorio\git\lab2final\appalquilervehiculos.cpp
+1701308661 source:c:\users\steam\onedrive\escritorio\git\lab2final\appalquilervehiculos.cpp
 	"AppAlquilerVehiculos.h"
+	"VehiculoManager.h"
 	<iostream>
+	"rlutil.h"
 
-1699489753 c:\users\steam\onedrive\escritorio\git\lab2final\appalquilervehiculos.h
+1701301669 c:\users\steam\onedrive\escritorio\git\lab2final\appalquilervehiculos.h
 	"MenuVehiculos.h"
 	"MenuReserva.h"
 	"MenuCliente.h"
+	"MenuReportes.h"
 	"MenuCopiaYRestauracionDatos.h"
 	"DisponibilidadFlota.h"
+	"MenuRecuperarRegistros.h"
 
-1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menuvehiculos.h
+1701214528 c:\users\steam\onedrive\escritorio\git\lab2final\menuvehiculos.h
 	"VehiculoManager.h"
+	"MenuMarcas.h"
+	"SubMenuListadosVehiculo.h"
 
-1700004175 c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.h
+1701309895 c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.h
 	"Vehiculo.h"
 	"VehiculoArchivo.h"
+	"Marca.h"
+	"MarcaArchivo.h"
+	"MarcaManager.h"
 	<string>
 
-1699490188 c:\users\steam\onedrive\escritorio\git\lab2final\vehiculo.h
+1701028543 c:\users\steam\onedrive\escritorio\git\lab2final\vehiculo.h
 	<string>
 
 1699399839 c:\users\steam\onedrive\escritorio\git\lab2final\vehiculoarchivo.h
@@ -162,7 +171,7 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menureserva.h
 	"ReservaManager.h"
 
-1700008494 c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.h
+1701304336 c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.h
 	"Reserva.h"
 	"ReservaArchivo.h"
 	"VehiculoArchivo.h"
@@ -174,7 +183,7 @@
 	<string>
 	"Fecha.h"
 
-1698884209 c:\users\steam\onedrive\escritorio\git\lab2final\fecha.h
+1700916486 c:\users\steam\onedrive\escritorio\git\lab2final\fecha.h
 	<string>
 
 1699402127 c:\users\steam\onedrive\escritorio\git\lab2final\reservaarchivo.h
@@ -184,17 +193,16 @@
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menucliente.h
 	"ClienteManager.h"
 
-1700005863 c:\users\steam\onedrive\escritorio\git\lab2final\clientemanager.h
+1701312724 c:\users\steam\onedrive\escritorio\git\lab2final\clientemanager.h
 	"Cliente.h"
 	"ClienteArchivo.h"
 	"string"
 
-1699145704 c:\users\steam\onedrive\escritorio\git\lab2final\cliente.h
+1701220290 c:\users\steam\onedrive\escritorio\git\lab2final\cliente.h
 	<string>
 
-1699403605 c:\users\steam\onedrive\escritorio\git\lab2final\clientearchivo.h
+1701009685 c:\users\steam\onedrive\escritorio\git\lab2final\clientearchivo.h
 	"Cliente.h"
-	<iostream>
 
 1699145757 source:c:\users\steam\onedrive\escritorio\git\lab2final\cliente.cpp
 	"Cliente.h"
@@ -204,47 +212,53 @@
 	"ClienteArchivo.h"
 	<iostream>
 
-1700006204 source:c:\users\steam\onedrive\escritorio\git\lab2final\clientemanager.cpp
+1701312861 source:c:\users\steam\onedrive\escritorio\git\lab2final\clientemanager.cpp
 	"ClienteManager.h"
 	<iostream>
+	<cstring>
+	<iomanip>
 	"MenuEditarCliente.h"
 
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menueditarcliente.h
 	"Cliente.h"
 
-1698884209 source:c:\users\steam\onedrive\escritorio\git\lab2final\fecha.cpp
+1701035477 source:c:\users\steam\onedrive\escritorio\git\lab2final\fecha.cpp
 	"Fecha.h"
 	<ctime>
 	<iostream>
 
-1698707181 source:c:\users\steam\onedrive\escritorio\git\lab2final\main.cpp
+1701308814 source:c:\users\steam\onedrive\escritorio\git\lab2final\main.cpp
 	<iostream>
 	"AppAlquilerVehiculos.h"
-	"ClienteManager.h"
 	<locale.h>
+	"rlutil.h"
 
 1700006260 source:c:\users\steam\onedrive\escritorio\git\lab2final\menucliente.cpp
 	"MenuCliente.h"
 	<iostream>
 
-1698361636 source:c:\users\steam\onedrive\escritorio\git\lab2final\menueditarcliente.cpp
+1701309296 source:c:\users\steam\onedrive\escritorio\git\lab2final\menueditarcliente.cpp
 	"MenuEditarCliente.h"
 	<iostream>
+	"rlutil.h"
 
-1698361867 source:c:\users\steam\onedrive\escritorio\git\lab2final\menueditarvehiculo.cpp
+1701309241 source:c:\users\steam\onedrive\escritorio\git\lab2final\menueditarvehiculo.cpp
 	"MenuEditarVehiculo.h"
 	<iostream>
+	"rlutil.h"
 
 1697765551 c:\users\steam\onedrive\escritorio\git\lab2final\menueditarvehiculo.h
 	"Vehiculo.h"
 
-1700008554 source:c:\users\steam\onedrive\escritorio\git\lab2final\menureserva.cpp
+1701308745 source:c:\users\steam\onedrive\escritorio\git\lab2final\menureserva.cpp
 	"MenuReserva.h"
 	<iostream>
+	"rlutil.h"
 
-1700004742 source:c:\users\steam\onedrive\escritorio\git\lab2final\menuvehiculos.cpp
+1701308934 source:c:\users\steam\onedrive\escritorio\git\lab2final\menuvehiculos.cpp
 	"MenuVehiculos.h"
 	<iostream>
+	"rlutil.h"
 
 1699145355 source:c:\users\steam\onedrive\escritorio\git\lab2final\reserva.cpp
 	"Reserva.h"
@@ -254,7 +268,7 @@
 1699402549 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservaarchivo.cpp
 	"ReservaArchivo.h"
 
-1699490188 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculo.cpp
+1701028144 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculo.cpp
 	"Vehiculo.h"
 	<cstring>
 
@@ -263,18 +277,25 @@
 	<cstdio>
 	<cstring>
 
-1700007905 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.cpp
+1701313112 source:c:\users\steam\onedrive\escritorio\git\lab2final\vehiculomanager.cpp
 	"VehiculoManager.h"
-	<iostream>
+	"ReservaManager.h"
 	<algorithm>
 	"MenuEditarVehiculo.h"
+	"Fecha.h"
+	<iostream>
+	<iomanip>
+	"rlutil.h"
 
-1700008519 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.cpp
+1701304935 source:c:\users\steam\onedrive\escritorio\git\lab2final\reservamanager.cpp
 	"ReservaManager.h"
 	"Vehiculo.h"
-	<iostream>
 	<algorithm>
 	<iomanip>
+	"VehiculoManager.h"
+	"MarcaArchivo.h"
+	"Marca.h"
+	<iostream>
 
 1699142557 source:c:\users\steam\onedrive\escritorio\git\lab2final\disponibilidadflota.cpp
 	"DisponibilidadFlota.h"
@@ -291,13 +312,86 @@
 	"Reserva.h"
 	<string>
 
-1699489307 c:\users\steam\onedrive\escritorio\git\lab2final\menucopiayrestauraciondatos.h
+1701017884 c:\users\steam\onedrive\escritorio\git\lab2final\menucopiayrestauraciondatos.h
 	"ClienteManager.h"
 	"ReservaManager.h"
 	"VehiculoManager.h"
+	"MarcaManager.h"
 
-1699575905 source:c:\users\steam\onedrive\escritorio\git\lab2final\menucopiayrestauraciondatos.cpp
+1701309425 source:c:\users\steam\onedrive\escritorio\git\lab2final\menucopiayrestauraciondatos.cpp
 	"MenuCopiaYRestauracionDatos.h"
+	"rlutil.h"
 	"MenuCliente.h"
 	<iostream>
+
+1701011498 source:c:\users\steam\onedrive\escritorio\git\lab2final\marca.cpp
+	"Marca.h"
+	<cstring>
+
+1701011498 c:\users\steam\onedrive\escritorio\git\lab2final\marca.h
+	<string>
+
+1701012963 source:c:\users\steam\onedrive\escritorio\git\lab2final\marcaarchivo.cpp
+	"MarcaArchivo.h"
+
+1701012963 c:\users\steam\onedrive\escritorio\git\lab2final\marcaarchivo.h
+	"Marca.h"
+
+1701305724 source:c:\users\steam\onedrive\escritorio\git\lab2final\marcamanager.cpp
+	"MarcaManager.h"
+	<iomanip>
+	<iostream>
+
+1701305051 c:\users\steam\onedrive\escritorio\git\lab2final\marcamanager.h
+	"Marca.h"
+	"MarcaArchivo.h"
+	<string>
+
+1701017540 c:\users\steam\onedrive\escritorio\git\lab2final\menumarcas.h
+	"MarcaManager.h"
+
+1701309205 source:c:\users\steam\onedrive\escritorio\git\lab2final\menumarcas.cpp
+	"MenuMarcas.h"
+	<iostream>
+	"rlutil.h"
+
+1701214528 c:\users\steam\onedrive\escritorio\git\lab2final\submenulistadosvehiculo.h
+	"VehiculoManager.h"
+
+1701214691 source:c:\users\steam\onedrive\escritorio\git\lab2final\submenulistadosvehiculo.cpp
+	"SubMenuListadosVehiculo.h"
+	<iostream>
+
+1701215956 c:\users\steam\onedrive\escritorio\git\lab2final\menureportes.h
+	"ReservaManager.h"
+
+1701308864 source:c:\users\steam\onedrive\escritorio\git\lab2final\menureportes.cpp
+	"MenuReportes.h"
+	<iostream>
+	"rlutil.h"
+
+1701308984 source:c:\users\steam\onedrive\escritorio\git\lab2final\menurecuperarregistros.cpp
+	"MenuRecuperarRegistros.h"
+	<iostream>
+	"rlutil.h"
+
+1701305761 c:\users\steam\onedrive\escritorio\git\lab2final\menurecuperarregistros.h
+	"ReservaManager.h"
+	"VehiculoManager.h"
+	"ClienteManager.h"
+	"MarcaManager.h"
+
+1571584339 c:\users\steam\onedrive\escritorio\git\lab2final\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
 

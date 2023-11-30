@@ -1,19 +1,21 @@
 #include "MenuEditarCliente.h"
 #include <iostream>
 using namespace std;
+#include "rlutil.h"
 
 Cliente MenuEditarCliente::Mostrar(Cliente& reg)
 {
+    system("cls");
     cout << endl;
     cout << "----------------------------------------" << endl;
     cout << "--------------EDITAR CLIENTE------------" << endl;
     cout << "----------------------------------------" << endl;
-    cout << "1 - NOMBRES" << endl;
-    cout << "2 - APELLIDOS" << endl;
-    cout << "3 - DOMICILIO" << endl;
-    cout << "4 - TELEFONO" << endl;
-    cout << "5 - EMAIL" << endl;
-    cout << "0 - CANCELAR" <<endl;
+    rlutil::locate(4, 5);cout << "1 - NOMBRES" << endl;
+    rlutil::locate(4, 6);cout << "2 - APELLIDOS" << endl;
+    rlutil::locate(4, 7);cout << "3 - DOMICILIO" << endl;
+    rlutil::locate(4, 8);cout << "4 - TELEFONO" << endl;
+    rlutil::locate(4, 9);cout << "5 - EMAIL" << endl;
+    rlutil::locate(4, 10);cout << "0 - CANCELAR" <<endl;
     cout << endl <<"INGRESE UNA OPCION: ";
     int opcion;
     cin >> opcion;

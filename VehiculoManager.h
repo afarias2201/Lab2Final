@@ -2,6 +2,9 @@
 #define VEHICULOMANAGER_H
 #include "Vehiculo.h"
 #include "VehiculoArchivo.h"
+#include "Marca.h"
+#include "MarcaArchivo.h"
+#include "MarcaManager.h"
 #include <string>
 
 
@@ -16,11 +19,13 @@ class VehiculoManager
         int Buscar(std::string nroPatente);
         void VehiculoIngresaTaller();
         void VehiculoRetiroDeTaller();
-        int contarVehiculosActivos();
-        void cargarVectorVehiculosActivos(Vehiculo* vec, int cantidadElementos);
+        void RecuperarRegistroEliminado();
 
         void HacerCopiaSeguridad();
         void RestaurarCopiaDeSeguridad();
+
+        //Reportes
+        void generarDisponibilidad();
 
         //Consultar
         void ListarxPatente();
@@ -30,6 +35,7 @@ class VehiculoManager
 
         //Listar
         void OrdenarxGama();
+        void OrdenarxMarca();
         void OrdenarxAnioProduccion();
 
         //Reporte
@@ -37,7 +43,10 @@ class VehiculoManager
     private:
         VehiculoArchivo _archivo = VehiculoArchivo("vehiculo.dat");
         VehiculoArchivo _archivoBkp = VehiculoArchivo("vehiculo.bkp");
-        void ordenarVectorVehiculosxAnio(Vehiculo *vehiculos, int cantidadElementos);
+        MarcaArchivo _archivoMarca = MarcaArchivo("marcas.dat");
+        void ordenarVectorVehiculosxAnio(Vehiculo* vehiculos, int cantidadElementos);
+        void ordenarVectorVehiculosxMarca(Vehiculo* vehiculos, int cantidadElementos);
+        void mostrarTituloVehiculos();
 };
 
 #endif // VEHICULOMANAGER_H

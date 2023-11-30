@@ -19,8 +19,10 @@ class ReservaManager
         void CargarVectorPorNroPatente(std::string patente, int cantidadElementos, Reserva* vec);
         bool validarDisponibilidadVehiculo(Fecha fInicio, Fecha fFin, Reserva* vec, int cantidadElementos);
         bool validarDisponibilidadVehiculoExtension(Fecha fInicio, Fecha nuevaFechaFin, Reserva* vec, int cantidadElementos);
+        bool validarSiEstaDisponibleHoy(Fecha fechaHoy, Reserva* reserva, int cantidadElementos);
         int contarReservasxPatentes(std::string patente);
         void extenderReserva();
+        void RecuperarRegistroEliminado();
 
         void HacerCopiaSeguridad();
         void RestaurarCopiaSeguridad();
@@ -37,7 +39,7 @@ class ReservaManager
         //Reportes
         void recaudacionxGama();
         void recaudacionAnual();
-        void gamaConReservaMasExtensa();
+        void cantidadReservasxMarca();
 
     private:
         ReservaArchivo _archivo = ReservaArchivo("reserva.dat");
@@ -49,8 +51,6 @@ class ReservaManager
         void mostrarTituloReservas();
         void ordenarReservasPorFecha(Reserva* reservas, int cantidadElementos);
         void ordenarReservasPorImporte(Reserva* reservas, int cantidadElentos);
-
-        void listarVehiculos();
 };
 
 #endif // RESERVAMANAGER_H

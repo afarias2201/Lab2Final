@@ -42,10 +42,14 @@
 		<Unit filename="ClienteArchivo.h" />
 		<Unit filename="ClienteManager.cpp" />
 		<Unit filename="ClienteManager.h" />
-		<Unit filename="DisponibilidadFlota.cpp" />
-		<Unit filename="DisponibilidadFlota.h" />
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
+		<Unit filename="Marca.cpp" />
+		<Unit filename="Marca.h" />
+		<Unit filename="MarcaArchivo.cpp" />
+		<Unit filename="MarcaArchivo.h" />
+		<Unit filename="MarcaManager.cpp" />
+		<Unit filename="MarcaManager.h" />
 		<Unit filename="MenuCliente.cpp" />
 		<Unit filename="MenuCliente.h" />
 		<Unit filename="MenuCopiaYRestauracionDatos.cpp" />
@@ -54,6 +58,12 @@
 		<Unit filename="MenuEditarCliente.h" />
 		<Unit filename="MenuEditarVehiculo.cpp" />
 		<Unit filename="MenuEditarVehiculo.h" />
+		<Unit filename="MenuMarcas.cpp" />
+		<Unit filename="MenuMarcas.h" />
+		<Unit filename="MenuRecuperarRegistros.cpp" />
+		<Unit filename="MenuRecuperarRegistros.h" />
+		<Unit filename="MenuReportes.cpp" />
+		<Unit filename="MenuReportes.h" />
 		<Unit filename="MenuReserva.cpp" />
 		<Unit filename="MenuReserva.h" />
 		<Unit filename="MenuVehiculos.cpp" />
@@ -64,6 +74,8 @@
 		<Unit filename="ReservaArchivo.h" />
 		<Unit filename="ReservaManager.cpp" />
 		<Unit filename="ReservaManager.h" />
+		<Unit filename="SubMenuListadosVehiculo.cpp" />
+		<Unit filename="SubMenuListadosVehiculo.h" />
 		<Unit filename="Vehiculo.cpp" />
 		<Unit filename="Vehiculo.h" />
 		<Unit filename="VehiculoArchivo.cpp" />
@@ -71,6 +83,7 @@
 		<Unit filename="VehiculoManager.cpp" />
 		<Unit filename="VehiculoManager.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="rlutil.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

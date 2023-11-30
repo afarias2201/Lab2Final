@@ -27,7 +27,7 @@ class Cliente
 
     private:
         int _id;
-        char _dni[8];
+        char _dni[10];
         char _nombres[50];
         char _apellidos[50];
         char _domicilio[50];

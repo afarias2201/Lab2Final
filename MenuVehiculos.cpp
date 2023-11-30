@@ -1,6 +1,7 @@
 #include "MenuVehiculos.h"
 #include <iostream>
 using namespace std;
+#include "rlutil.h"
 
 void MenuVehiculos::Mostrar(){
     int opc;
@@ -10,19 +11,16 @@ void MenuVehiculos::Mostrar(){
         cout << "-------------------------------------------" << endl;
         cout << "--------------MENU DE VEHICULOS------------" << endl;
         cout << "-------------------------------------------" << endl;
-        cout << "1 - CARGAR" << endl;
-        cout << "2 - EDITAR" << endl;
-        cout << "3 - ELIMINAR" << endl;
-        cout << "4 - LISTADO DE VEHICULOS" << endl;
-        cout << "5 - BUSCAR POR PATENTE" << endl;
-        cout << "6 - INGRESO A TALLER" << endl;
-        cout << "7 - RETIRO DE TALLER" << endl;
-        cout << "8 - LISTAR VEHICULOS POR GAMA" << endl;
-        cout << "9 - LISTAR VEHICULOS POR MARCA" << endl;
-        cout << "10 - LISTAR VEHICULOS POR AÑO DE PRODUCCION" << endl;
-        cout << "11 - LISTAR VEHICULOS ORDENADOS POR GAMA" << endl;
-        cout << "12 - LISTAR VEHICULOS ORDENADOS POR AÑO DE PRODUCCIÓN" << endl;
-        cout << "0 - VOLVER AL MENU PRINCIPAL" <<endl;
+        rlutil::locate(4, 5);cout << "1 - CARGAR" << endl;
+        rlutil::locate(4, 6);cout << "2 - EDITAR" << endl;
+        rlutil::locate(4, 7);cout << "3 - ELIMINAR" << endl;
+        rlutil::locate(4, 8);cout << "4 - LISTADO DE VEHICULOS" << endl;
+        rlutil::locate(4, 9);cout << "5 - BUSCAR POR PATENTE" << endl;
+        rlutil::locate(4, 10);cout << "6 - INGRESO A TALLER" << endl;
+        rlutil::locate(4, 11);cout << "7 - RETIRO DE TALLER" << endl;
+        rlutil::locate(4, 12);cout << "8 - ACCEDER A LISTADOS DE VEHICULOS" << endl;
+        rlutil::locate(4, 13);cout << "9 - ABM MARCAS" << endl;
+        rlutil::locate(4, 14);cout << "0 - VOLVER AL MENU PRINCIPAL" <<endl;
         cout << endl <<"INGRESE UNA OPCION: ";
         cin >> opc;
         system("cls");
@@ -50,19 +48,10 @@ void MenuVehiculos::Mostrar(){
             _manager.VehiculoRetiroDeTaller();
             break;
         case 8:
-            _manager.ListarxGamaVehiculo();
+            _menuListados.Mostrar();
             break;
         case 9:
-            _manager.ListarxMarca();
-            break;
-        case 10:
-            _manager.ListarxAnioProduccion();
-            break;
-        case 11:
-            _manager.OrdenarxGama();
-            break;
-        case 12:
-            _manager.OrdenarxAnioProduccion();
+            _menuMarcas.Mostrar();
             break;
         case 0:
             return ;
@@ -71,6 +60,6 @@ void MenuVehiculos::Mostrar(){
             cout << "Opcion ingresada es incorrecta." << endl << "Intente nuevamente." << endl;
             break;
         }
-        system("pause");
+    system("pause");
     }
 }

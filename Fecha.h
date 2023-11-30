@@ -20,6 +20,7 @@ class Fecha
       int getAnio();
       void agregarDias(int cantidadDias);
       std::string toString();
+      int calcularDias(Fecha fecha2);
 
       bool operator == (Fecha f);
       bool operator != (Fecha f);

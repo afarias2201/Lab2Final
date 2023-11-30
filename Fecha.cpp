@@ -131,3 +131,13 @@ bool Fecha::operator < (Fecha f){
         return false;
     }
 }
+
+int Fecha::calcularDias(Fecha fecha2){
+    int cantidadDias = 1;
+    Fecha fechaAux = Fecha(_dia, _mes, _anio);
+    while(fechaAux != fecha2){
+        fechaAux.agregarDia();
+        cantidadDias++;
+    }
+    return cantidadDias;
+}

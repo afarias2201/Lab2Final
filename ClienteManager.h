@@ -14,6 +14,7 @@ class ClienteManager
         void ListarTodos();
         int Buscar(std::string dni);
         void ListarxDNI();
+        void RecuperarRegistroEliminado();
 
         void HacerCopiaSeguridad();
         void RestaurarCopiaSeguridad();
@@ -27,6 +28,8 @@ class ClienteManager
         void cargarVectorClientes(Cliente* clientes, int cantidadRegistros);
         void OrdenarVectorClientesAlfabeticamente(Cliente* clientes, int cantidadRegistros);
         int generarIdCliente();
+        bool validarEmail(std::string email);
+        void mostrarTituloClientes();
 };
 
 #endif // CLIENTEMANAGER_H

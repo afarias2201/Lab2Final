@@ -3,6 +3,7 @@
 #include "ClienteManager.h"
 #include "ReservaManager.h"
 #include "VehiculoManager.h"
+#include "MarcaManager.h"
 
 
 class MenuCopiaYRestauracionDatos
@@ -14,6 +15,7 @@ class MenuCopiaYRestauracionDatos
         ClienteManager _clienteManager;
         ReservaManager _reservaManager;
         VehiculoManager _vehiculoManager;
+        MarcaManager _marcaManager;
 };
 
 #endif // MENUCOPIAYRESTAURACIONDATOS_H

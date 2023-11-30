@@ -1,5 +1,7 @@
 #include "ClienteManager.h"
 #include <iostream>
+#include <cstring>
+#include <iomanip>
 using namespace std;
 #include "MenuEditarCliente.h"
 
@@ -30,6 +32,11 @@ void ClienteManager::Cargar(){
     getline(cin, telefono);
     cout << "E-mail: ";
     getline(cin, email);
+
+    if(!validarEmail(email)){
+        cout << "El e-mail ingresado no es válido." << endl;
+        return;
+    }
 
     Cliente reg;
     reg.setID(id);
@@ -72,13 +79,31 @@ void ClienteManager::Editar(){
         Cliente reg = _archivo.Leer(posicion);
         cout << "Registro a modificar: " << endl;
         Mostrar(reg);
+        cout << endl;
+
+        system("pause");
+
         MenuEditarCliente menuEditarCliente;
         menuEditarCliente.Mostrar(reg);
-        if(_archivo.Guardar(reg, posicion)){
-            cout << "Cliente modificado correctamente." << endl;
+
+        if(!validarEmail(reg.getEmail())){
+            cout << "Nuevo email no es válido. Modificación cancelada." << endl;
+            return;
         }
-        else{
-            cout << "Error. No se pudo modificar el registro." << endl;
+
+        cout << endl << "Nuevo Registro:" << endl;
+        Mostrar(reg);
+        char confirmacion;
+        cout << endl << "¿Desea continuar? (S/N): ";
+        cin >> confirmacion;
+
+        if(toupper(confirmacion) == 'S'){
+            if(_archivo.Guardar(reg, posicion)){
+                cout << "Cliente modificado correctamente." << endl;
+            }
+            else{
+                cout << "Error. No se pudo modificar el registro." << endl;
+            }
         }
     }
     else{
@@ -116,23 +141,23 @@ void ClienteManager::Eliminar(){
     }
 }
 void ClienteManager::Mostrar(Cliente reg){
-    if(reg.getEstado()){
-        cout << "---------------------------" << endl;
-        cout << "ID: " << reg.getID() << endl;
-        cout << "DNI: " << reg.getDNI() << endl;
-        cout << "APELLIDOS: " << reg.getApellidos() << endl;
-        cout << "NOMBRES: " << reg.getNombres() << endl;
-        cout << "DOMICILIO: " << reg.getDomicilio() << endl;
-        cout << "TELEFONO: " << reg.getTelefono() << endl;
-        cout << "E-MAIL: " << reg.getEmail() << endl;
-    }
+        cout << left << setw(5) << reg.getID();
+        cout << left << setw(13) << reg.getDNI();
+        cout << left << setw(20) << reg.getApellidos();
+        cout << left << setw(20) << reg.getNombres();
+        cout << left << setw(15) << reg.getDomicilio();
+        cout << left << setw(13) << reg.getTelefono();
+        cout << left << setw(15) << reg.getEmail();
+        cout << endl;
 }
 void ClienteManager::ListarTodos(){
     int cantidadRegistros = _archivo.contarRegistros();
+    mostrarTituloClientes();
     for(int i=0; i<cantidadRegistros; i++){
         Cliente reg = _archivo.Leer(i);
         if(reg.getEstado()){
             Mostrar(reg);
+
         }
     }
     cout << endl;
@@ -180,7 +205,7 @@ void ClienteManager::ClientesOrdenadoAlfabeticamente(){
 
     cargarVectorClientes(clientes, cantidadRegistros);
     OrdenarVectorClientesAlfabeticamente(clientes, cantidadRegistros);
-
+    mostrarTituloClientes();
     for(int i=0; i<cantidadRegistros; i++){
         if(clientes[i].getEstado()){
             Mostrar(clientes[i]);
@@ -246,4 +271,82 @@ void ClienteManager::RestaurarCopiaSeguridad(){
         cout << "Falla al restaurar backup." << endl;
     }
     delete[] clientes;
+}
+
+bool ClienteManager::validarEmail(std::string email){
+    int cantidadCaracteres = email.length();
+    char* auxiliar = new char[cantidadCaracteres];
+    strcpy(auxiliar, email.c_str());
+    bool contieneArroba = false;
+    bool contienePunto = false;
+    for(int i=0; i<cantidadCaracteres; i++){
+        if(auxiliar[i] == '@'){
+            contieneArroba = true;
+        }
+    }
+    for(int x=0; x<cantidadCaracteres; x++){
+        if(auxiliar[x] == '.'){
+            contienePunto = true;
+        }
+    }
+
+    if(contienePunto && contieneArroba){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+void ClienteManager::RecuperarRegistroEliminado(){
+    int cantidadRegistros = _archivo.contarRegistros();
+    string dni;
+    cout << "Registros eliminados: " << endl;
+    for(int i=0; i<cantidadRegistros; i++){
+        Cliente cliente = _archivo.Leer(i);
+        if(!cliente.getEstado()){
+            Mostrar(cliente);
+        }
+    }
+    cout << endl << "Ingrese el DNI del cliente a recuperar: ";
+    cin >> dni;
+    int posicion = _archivo.Buscar(dni);
+    if(posicion == -1){
+        cout << "Registro no encontrado" << endl;
+        return;
+    }
+    Cliente reg = _archivo.Leer(posicion);
+    if(!reg.getEstado()){
+        cout << "Registro a recuperar: " << endl;
+        Mostrar(reg);
+        cout << endl << "¿Desea continuar? (S/N): ";
+        char confirmacion;
+        cin >> confirmacion;
+        if(toupper(confirmacion) == 'S'){
+            reg.setEstado(true);
+            if(_archivo.Guardar(reg,posicion)){
+                cout << "Registro recuperado correctamente." << endl;
+            }
+            else{
+                cout << "Error al recuperar registro." << endl;
+            }
+        }
+        else{
+            cout << "Operación cancelada." << endl;
+        }
+    }
+    else{
+        cout << "El registro no se encuentra eliminado." << endl;
+    }
+}
+
+void ClienteManager::mostrarTituloClientes(){
+        cout << left << setw(5) << "ID";
+        cout << left << setw(13) << "DNI";
+        cout << left << setw(20) << "APELLIDOS";
+        cout << left << setw(20) << "NOMBRES";
+        cout << left << setw(15) << "DOMICILIO";
+        cout << left << setw(13) << "TELEFONO";
+        cout << left << setw(15) << "EMAIL";
+        cout << endl << endl;
 }

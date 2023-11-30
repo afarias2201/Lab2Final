@@ -1,21 +1,24 @@
 #include "MenuEditarVehiculo.h"
 #include <iostream>
 using namespace std;
+#include "rlutil.h"
 
 Vehiculo MenuEditarVehiculo::Mostrar(Vehiculo& reg)
 {
+    system("cls");
     cout << endl;
     cout << "-----------------------------------------" << endl;
     cout << "--------------EDITAR VEHICULO------------" << endl;
     cout << "-----------------------------------------" << endl;
-    cout << "1 - MODELO" << endl;
-    cout << "2 - MARCA" << endl;
-    cout << "3 - TIPO" << endl;
-    cout << "4 - FABRICACION" << endl;
-    cout << "0 - CANCELAR" <<endl;
+    rlutil::locate(4, 5);cout << "1 - MODELO" << endl;
+    rlutil::locate(4, 6);cout << "2 - MARCA" << endl;
+    rlutil::locate(4, 7);cout << "3 - TIPO" << endl;
+    rlutil::locate(4, 8);cout << "4 - FABRICACION" << endl;
+    rlutil::locate(4, 9);cout << "0 - CANCELAR" <<endl;
     cout << endl <<"INGRESE UNA OPCION: ";
     int opcion;
     cin >> opcion;
+    cout << endl;
     switch(opcion)
     {
     case 1:
@@ -29,10 +32,10 @@ Vehiculo MenuEditarVehiculo::Mostrar(Vehiculo& reg)
     break;
     case 2:
     {
-        string marca;
+        int marca;
         cout << "Ingrese nueva marca: ";
         cin >> marca;
-        reg.setMarca(marca);
+        reg.setIdMarca(marca);
         return reg;
     }
     break;
